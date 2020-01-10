@@ -1,0 +1,31 @@
+<div id="nav-parent">
+    <nav>
+        <div id="left-navbar">
+            <a [routerLink] = "['/']">
+                <img src="assets/icons/navbar-icon.png" alt="">
+            </a>
+            <div>
+                <a [routerLink]="['/flights']" (click)="changeToFlight()">Flight</a>
+                <a [routerLink]="['/hotel']">Hotel</a>
+                <a [routerLink]="['/train']" (click)= "changeToTrain()">Train</a>
+                <a [routerLink]="['/carrental']">Car Rental</a>
+                <a [routerLink]="['/entertainment']">Entertainment</a>
+            </div>
+        </div>
+        <div id="right-navbar">
+                <a [routerLink]="['/tixpoint']">Tix Point</a>
+                <a [routerLink]="['/checkorder']">Check Order</a>
+                <a *ngIf="!accountService.isLoggedIn" (click)="showLoginModal()">Login</a>
+                <a *ngIf="!accountService.isLoggedIn" (click)="showRegisterModal()" class="reg-div">Register</a>
+                <div *ngIf="accountService.isLoggedIn" id="navbar-parent">
+                    Account
+                    <ul id="navbar-content">
+                        <li><a [routerLink]="['/myorder']">My Order</a></li>
+                        <li><a [routerLink]="['/profile']">Profile</a></li>
+                        <li><a>Log Out</a></li>
+                    </ul>
+                </div>
+                
+        </div>
+    </nav>
+</div>

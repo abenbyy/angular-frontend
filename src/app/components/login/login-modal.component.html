@@ -1,0 +1,118 @@
+<div id="field-parent" *ngIf="isLogin">
+    <div id="login-field">
+        <div id="logreg-div">
+            <div *ngIf="isNewUser">Log in/Register</div>
+            <div *ngIf="!isNewUser">Login</div>
+        </div>
+        <div>
+            Your amazing trip starts here.
+        </div>
+        <div class="input-container marginned">
+            <mat-form-field>
+                <input matInput placeholder="Email or Phone Number" [formControl]="emailPhoneControl" name="emailorphone">
+                <mat-error *ngIf="emailPhoneControl.hasError('required')">
+                    Email/Phone is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="input-container" *ngIf="!isNewUser">
+            <mat-form-field>
+                <input matInput placeholder="Password" [type]="hide ? 'password':'text'" [formControl]="passwordLoginControl">
+                <button mat-icon-button matSuffix (click)="hide = !hide">
+                    <mat-icon>{{hide ? 'visibility_off':'visibility'}}</mat-icon>
+                </button>
+                
+
+                <mat-error *ngIf="passwordLoginControl.hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+                
+                
+            </mat-form-field>
+            
+        </div>
+        <div class="error-message" *ngIf="isIncorrectPass">
+            <strong>Incorrect password!</strong>
+        </div>
+        <div>
+            <button class="button" mat-button (click)="checkUserAccount()" *ngIf="isNewUser">CONTINUE</button>
+            <button class="button" mat-button (click)="validateLogin()" *ngIf="!isNewUser">LOG IN</button>
+        </div>
+        <div class="centered">
+            or with
+        </div>
+        <div class="centered log-api-container">
+            <div (click)="googleSignIn()" class="log-api">
+                <img src="/assets/icons/google-icon.svg" alt="">
+                <div>Google</div>
+            </div>
+            <div (click)="facebookSignIn()"class="log-api">
+                <img src="/assets/icons/facebook-icon.svg" alt="">
+                <div>Facebook</div>
+            </div>
+        </div>
+        <div class="centered centertext">By registering you have agreed to our Privacy Policy and Term & Conditions.</div>
+    </div>
+</div>
+
+<div id="register-parent" *ngIf="!isLogin">
+    <div>
+        <img src="" alt="">
+        <div>Register</div>
+    </div>
+    <!-- for email -->
+    <div>
+        <div>Email</div>
+        <div>{{arg}}</div>
+    </div>
+
+    
+    <div>
+        <mat-form-field>
+            <input matInput placeholder="First Name" [formControl]="firstNameControl">
+            <mat-error *ngIf="firstNameControl.hasError('required')">
+                First Name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <input matInput placeholder="Last Name" [formControl]="lastNameControl">
+            <mat-error *ngIf="lastNameControl.hasError('required')">
+                Last Name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div id="phone-container">
+        <mat-form-field id="country-code">
+            <mat-label>Country Code</mat-label>
+            <mat-select [(ngModel)]="selectedCode" name="code">
+                <mat-option *ngFor="let code of codes" [value]="code.value">{{code.viewValue}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Phone Number" [formControl]="phoneControl">
+            <mat-error *ngIf="phoneControl.hasError('required')">
+                Phone Number is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput placeholder="Password" [type]="hide ? 'password':'text'" [formControl]="passwordControl">
+            <button mat-icon-button matSuffix (click)="hide = !hide">
+                <mat-icon>{{hide ? 'visibility_off':'visibility'}}</mat-icon>
+            </button>
+            
+            <!-- <mat-pass-toggle-visibility #toggle matSuffix></mat-pass-toggle-visibility> -->
+            <mat-error *ngIf="passwordControl.hasError('required')">
+                Password is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <button (click)="createUser()" class="button" mat-button>CREATE ACCOUNT</button>
+    </div>
+
+</div>

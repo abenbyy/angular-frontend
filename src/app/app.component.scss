@@ -1,0 +1,81 @@
+*{
+    margin:0px;
+    padding: 0px;
+    transition: 0.5ms;
+}
+
+
+$mcolor : #58627a;
+$bcolor : #F7F7F7;
+$hcolor: #0064d2;
+$buttoncolor: #FEDD00;
+$formbcolor: #F6F9FF;
+$formgraycolor: #f5f6fa;
+$mfont: OpenSansFont;
+
+
+@font-face{
+    font-family: 'OpenSansFont';
+    src: url('/assets/fonts/open-sans-v17-latin/open-sans-v17-latin-regular.eot');
+    src: local('Open Sans Regular'), local('OpenSans-Regular'),
+         url('/assets/fonts/open-sans-v17-latin/open-sans-v17-latin-regular.woff2') format('woff2'),
+         url('/assets/fonts/open-sans-v17-latin/open-sans-v17-latin-regular.woff') format('woff'),
+         url('/assets/fonts/open-sans-v17-latin/open-sans-v17-latin-regular.ttf') format('truetype'),
+         url('/assets/fonts/open-sans-v17-latin/open-sans-v17-latin-regular.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/open-sans-v17-latin/open-sans-v17-latin-regular.svg#OpenSans') format('svg');
+}
+
+@mixin hoverable-text(){
+    color: $mcolor;
+    text-decoration: none;
+    font-family: $mfont;  
+    margin: 0 10px;
+    &:hover{
+        color: $hcolor;
+    }
+}
+
+@mixin normaltext{
+    font-family: $mfont;
+    color: $mcolor;
+    text-decoration: none;
+}
+
+@mixin dfjccaic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin dfjcsbaic{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin dfjcsaaic{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@mixin boxedform{
+    box-shadow: 8px 8px 5px grey;
+    border-radius: 8px;
+}
+
+@mixin yellowbutton{
+    color: $hcolor;
+    background-color: $buttoncolor;
+    padding: 12px 24px;
+    border:none;
+    border-radius: 24px;
+}
+
+@mixin bluebutton{
+    color: #ffffff;
+    background-color: $hcolor;
+    padding: 12px 24px;
+    border:none;
+    border-radius: 24px;
+}

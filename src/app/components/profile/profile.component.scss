@@ -1,0 +1,41 @@
+@import '../../app.component.scss';
+
+#main-body{
+    font-family: $mfont;
+}
+
+#right-side-profile{
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+}
+
+button{
+    @include bluebutton();
+    font-family: $mfont;
+    margin-right: 70px;
+}
+
+.right-end{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#profile-container{
+    @include dfjcsaaic();
+
+}
+.paddinged{
+    padding: 10px;
+}
+
+#left-side-profile{
+    background-color: $formgraycolor;
+    padding: 20px;
+    width: 40vw;
+
+}
+
+#blue{
+    color: $hcolor;
+}

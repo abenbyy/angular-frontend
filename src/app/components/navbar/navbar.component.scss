@@ -1,0 +1,63 @@
+
+
+@import '../../app.component.scss';
+
+*{
+    @include hoverable-text();
+}
+
+
+img{
+    width: 182px;
+    height: 52.14px;
+}
+
+#nav-parent{
+    @include dfjccaic();
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    
+}
+
+#left-navbar{
+    /*@include hoverable-text(true);*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#right-navbar{
+    /*@include hoverable-text(true);*/
+    font-weight: bold;
+    @include dfjccaic();
+}
+
+.reg-div{
+    @include boxedform();
+    padding: 2px;
+}
+
+ul{
+   position: absolute; 
+   background-color: $formbcolor;
+   display: none;
+   padding: 10px;
+}
+
+li{
+    left: 0;
+    margin: 0;
+    list-style-type: none;
+    
+}
+
+#navbar-parent:hover{
+    ul{
+        display: block;
+    }
+}

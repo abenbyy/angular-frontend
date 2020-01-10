@@ -1,0 +1,38 @@
+<mat-sidenav-container>
+    <mat-sidenav mode="side" opened>Test Side</mat-sidenav>
+    <mat-sidenav-content>
+        <div class="trip-container" *ngFor="let trip of trips; let i = index">
+            <div>{{trip.train.name}}</div>
+            <div class="trip-detail-container">
+                <div class="trip-leftside">
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                    <div class="trip-time">
+                        <div *ngIf="departureHours[i]<10&&departureMinutes[i]<10">0{{departureHours[i]}}:0{{departureMinutes[i]}}</div>
+                        <div *ngIf="departureHours[i]<10&&departureMinutes[i]>9">0{{departureHours[i]}}:{{departureMinutes[i]}}</div>
+                        <div *ngIf="departureHours[i]>9&&departureMinutes[i]<10">{{departureHours[i]}}:0{{departureMinutes[i]}}</div>
+                        <div *ngIf="departureHours[i]>9&&departureMinutes[i]>9">{{departureHours[i]}}:{{departureMinutes[i]}}</div>
+                        <div>{{trip.from.code}}</div>
+                    </div>
+                
+                    <div class="trip-time">
+                        <div *ngIf="arrivalHours[i]<10&&arrivalMinutes[i]<10">0{{arrivalHours[i]}}:0{{arrivalMinutes[i]}}</div>
+                        <div *ngIf="arrivalHours[i]<10&&arrivalMinutes[i]>9">0{{arrivalHours[i]}}:{{arrivalMinutes[i]}}</div>
+                        <div *ngIf="arrivalHours[i]>9&&arrivalMinutes[i]<10">{{arrivalHours[i]}}:0{{arrivalMinutes[i]}}</div>
+                        <div *ngIf="arrivalHours[i]>9&&arrivalMinutes[i]>9">{{arrivalHours[i]}}:{{arrivalMinutes[i]}}</div>
+                        <div>{{trip.to.code}}</div>
+                    </div>
+                </div>
+                {{trip.duration}} Minutes
+                <div>
+                    <strong class="blue-text">IDR {{trip.price}}</strong>/pax
+                </div>
+            </div>
+            <div class="trip-last">
+                <button class="yellow-button">SELECT</button>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

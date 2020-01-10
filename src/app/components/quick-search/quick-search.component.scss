@@ -1,0 +1,80 @@
+@import '../../app.component.scss';
+
+#main-quicksearch{
+    @include dfjccaic();
+}
+#quicksearch-container{
+    background-color: $formbcolor;
+    font-family: $mfont;
+   @include dfjccaic();
+   @include boxedform();
+   flex-direction: column;
+   width: 80vw;
+}
+.img-container{
+    @include dfjccaic();
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 2px;
+    font-size: 10px;
+    color: $mcolor;
+    line-height: 14px;
+    text-align: center;
+    padding: 6px 3px;
+    margin: 0 5px;
+    width: 86px;
+    height: 86px;
+}
+
+.img-container:hover{
+    border-color: $hcolor;
+    border-width: 2px;
+}
+#images-container{
+    @include dfjccaic();
+}
+
+#quick-first{
+     @include dfjcsbaic();
+     width: inherit;
+     padding: 18px 48px;
+}
+
+img{
+    width: 70px;
+    height: 60px;
+}
+
+#big-text{
+    font-size: 35px;
+    font-family: $mfont;
+    color: $mcolor;
+    font-weight: bold;
+}
+
+#user-container{
+    font-size: 20px;
+    font-family: $mfont;
+    color: $mcolor;
+}
+
+#message-container{
+    margin: 0 20px;
+}
+
+button{
+    @include yellowbutton();
+    align-self: flex-end;
+    margin: 20px;
+    padding: 18px;
+}
+
+#card-button{
+    width: 100%;
+    display: flex; justify-content: flex-end;
+}
+
+mat-form-field{
+    margin: 0 10px;
+}

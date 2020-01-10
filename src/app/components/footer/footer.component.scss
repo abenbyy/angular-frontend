@@ -1,0 +1,88 @@
+@import '../../app.component.scss';
+
+footer{
+    display: flex;
+    flex-direction: column;
+}
+#upper-footer{
+    margin: 100px 0 0 0;
+    @include dfjcsaaic();
+}
+
+#off-text{
+    font-size: 10px;
+    font-family: $mfont;
+    line-height: 15px;
+    vertical-align: middle;
+    width: 100px;
+}
+
+.store-link img{
+    width: 188px;
+    height: 58px;
+}
+.contact-container{
+    display: flex;
+}
+.contact-detail{
+    display: flex;
+    flex-direction: column;
+}
+#lower-footer{
+    @include dfjcsaaic();
+    margin-top: 10px;
+    padding: 10px 0;
+}
+#upper-footer .link-main-container{
+    width: calc(100/5)vw;
+}
+#lower-footer .link-main-container{
+    width: calc(100/4)vw;
+}
+.link-main-container{
+    height: 100%;
+    padding: 25px;
+    
+}
+.link-title{
+    font-weight: bold;
+}
+.links{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    
+    
+}
+
+.footer-logo-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.links a{
+    @include hoverable-text();
+    margin: 0;
+}
+
+#wonderful-container{
+    display: flex;
+
+}
+
+#logo-tiket{
+    width: 182px;
+    height: 52.14px;
+}
+
+.partner-logo{
+    width: auto;
+    height: auto;
+    max-width: 100px;
+    max-height: 40px;
+    margin: 0 10px;
+}
+
+
+

@@ -1,0 +1,6 @@
+Client ID:
+385839845308-kc4slf9ji1rufjj36bf246l4rhjfm9n7.apps.googleusercontent.com
+
+
+Client Secret:
+CtNuwj6ceXLfvNK7eZTCUHtR

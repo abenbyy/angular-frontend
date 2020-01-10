@@ -1,0 +1,26 @@
+
+@import '../../app.component.scss';
+
+*{
+    @include hoverable-text();
+}
+
+header{
+    display: flex;
+    justify-content: space-around;
+    font-size: 12px;
+    background-color: $bcolor;
+    padding: 5px;
+    margin: 0.2em;
+    width: 100vw;
+}
+
+.head-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-content{
+    margin: 0 10px;
+}
+

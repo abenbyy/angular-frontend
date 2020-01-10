@@ -1,0 +1,90 @@
+<div id="main-quicksearch">
+    <div id="quicksearch-container">
+        <div id="quick-first" *ngIf="!searchService.isSpecified">
+            <div id="message-container">
+                <div id="user-container">
+                    Hey, you        
+                </div>
+                <div id="big-text">
+                    Going anywhere?
+                </div>
+            </div>
+            <div id="images-container">
+                <div (click)= "changeSelected(0)" class="img-container">
+                    <img src="assets/icons/quick-plane.png" alt="">
+                    <div>Flights</div>
+                </div>
+                <div (click)= "changeSelected(1)" class="img-container">
+                    <img src="assets/icons/quick-hotel.png" alt="">
+                    <div>Hotels</div>
+                </div>
+                <div (click)= "changeSelected(2)" class="img-container">
+                    <img src="assets/icons/quick-train.png" alt="">
+                    <div>Trains</div>
+                </div>
+                <div (click)= "changeSelected(3)" class="img-container">
+                    <img src="assets/icons/quick-carrent.png" alt="">
+                    <div>Car Rentals</div>
+                </div>
+                <div (click)= "changeSelected(4)" class="img-container">
+                    <img src="assets/icons/quick-entertainment.png" alt="">
+                    <div>Entertainments</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <img src="" alt="">
+                <div>{{message}}</div>
+            </div>
+            <div>
+                <a>Recently Searched ></a>
+            </div>
+        </div>
+        <div *ngIf = "idx==0">
+            <mat-form-field>
+                <mat-label>From</mat-label>
+                <mat-select [(ngModel)]="selectedFrom" name="from">
+                    <mat-option *ngFor="let airport of airports" [value]="airport.city">{{airport.city}}, {{airport.country}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+
+                <mat-label>To</mat-label>
+                <mat-select [(ngModel)]="selectedTo" name="to">
+                    <mat-option *ngFor="let airport of airports" [value]="airport.city">{{airport.city}}, {{airport.country}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            
+        </div>
+        <div *ngIf = "idx==2">
+            <mat-form-field>
+                <mat-label>From</mat-label>
+                <mat-select [(ngModel)]="selectedFrom" name="from">
+                    <mat-option *ngFor="let station of stations" [value]="station.city">{{station.name}}, {{station.city}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+
+                <mat-label>To</mat-label>
+                <mat-select [(ngModel)]="selectedTo" name="to">
+                    <mat-option *ngFor="let station of stations" [value]="station.city">{{station.name}}, {{station.city}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div id="card-button">
+            <button (click)="search()" matButton >SEARCH {{type}}</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+@import '../../app.component.scss';
+
+mat-sidenav-content{
+    font-family: $mfont;
+}
+.blue-text{
+    color: $hcolor;
+}
+
+.flight-container{
+    padding: 10px;
+    margin: 10px;
+}
+.flight-detail-container{
+    @include dfjcsbaic();
+}
+.flight-leftside{
+    @include dfjcsaaic();
+}
+
+.flight-time{
+    padding: 10px;
+    margin: 10px;
+}
+.yellow-button{
+    @include yellowbutton();
+}
+.flight-last{
+    display: flex;
+    justify-content: flex-end;
+}
+
