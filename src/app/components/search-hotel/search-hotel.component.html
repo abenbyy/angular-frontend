@@ -1,0 +1,160 @@
+<mat-divider></mat-divider>
+<div id="sticky">
+    <div id="current-search-detail">
+        <div>
+            <div>Select Hotel City</div>
+            <div>
+                <mat-icon>king_bed</mat-icon>
+                    {{selectedCity}} 
+                
+            </div>
+        </div>
+        <div>
+            <button class="yellow-button" matButton (click)="openModal()">CHANGE SEARCH</button>
+        </div>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<div id="sort-widget">
+    <div>
+        Sort by
+        <mat-icon>sort</mat-icon>
+        <ul>
+            <li><a >Reccomendation</a></li>
+            <li><a >Lowest Price</a></li>
+            <li>Earliest Departure</li>
+            <li>Latest Departure</li>
+            <li>Earliest Arrival</li>
+            <li>Latest Arrival</li>
+            <li>Shortest Duration</li>
+        </ul>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<div id="main-container">
+    <div id="main-left">
+        <div id="filter-container">
+            <div>FILTERS</div>
+            <button class="blue-text" (click)="resetFilter()">RESET</button>
+        </div>
+        
+        <mat-accordion multi="true">
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Airlines
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expanel-container">
+                    <!--
+                    <mat-checkbox [(ngModel)]="checkBool[0]" class="chkbox" (click)="filterAirline('Batik')">Batik Air</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[1]" class="chkbox" (click)="filterAirline('Citilink')">Citilink Indonesia</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[2]" class="chkbox" (click)="filterAirline('Garuda')">Garuda Indonesia</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[3]" class="chkbox" (click)="filterAirline('Lion Air')">Lion Air</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[4]" class="chkbox" (click)="filterAirline('Sriwijaya')">Sriwijaya Air</mat-checkbox>
+                    -->
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Facilities
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expanel-container">
+                    <!--
+                    <mat-checkbox [(ngModel)]="checkBool[5]" class="chkbox" (click)="filterFacility('Baggage')">Baggage</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[6]" class="chkbox" (click)="filterFacility('Entertainment')">Entertainment</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[7]" class="chkbox" (click)="filterFacility('Meal')">Meal</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[8]" class="chkbox" (click)="filterFacility('USB port')">USB port / Power</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[9]" class="chkbox" (click)="filterFacility('Wi-Fi')">Wi-Fi</mat-checkbox>
+                    -->
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Times
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expanel-container">
+                    <div>Departure</div>
+                   <!-- <mat-checkbox [(ngModel)]="checkBool[10]" class="chkbox" (click)="filterDeparture(0)">00:00 - 06:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[11]" class="chkbox" (click)="filterDeparture(6)">06:00 - 12:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[12]" class="chkbox" (click)="filterDeparture(12)">12:00 - 18:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[13]" class="chkbox" (click)="filterDeparture(18)">18:00 - 24:00</mat-checkbox>
+                    <div>Arrival</div>
+                    <mat-checkbox [(ngModel)]="checkBool[14]" class="chkbox" (click)="filterArrival(0)">00:00 - 06:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[15]" class="chkbox" (click)="filterArrival(6)">06:00 - 12:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[16]" class="chkbox" (click)="filterArrival(12)">12:00 - 18:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[17]" class="chkbox" (click)="filterArrival(18)">18:00 - 24:00</mat-checkbox>
+                    -->
+                </div>
+            </mat-expansion-panel>
+            
+            
+        </mat-accordion>
+    
+
+    </div>
+    <div id="main-right">
+        <div id="no-hotelres" *ngIf="hotels.length === 0">
+            No Hotels Available :( 
+        </div>
+       <div *ngIf="hotels.length > 0 && !isMap">
+        <mat-card class="hotel-container" *ngFor="let hotel of hotels; let i = index">
+            <div class="upper-hotel-card">
+                <div>
+                    <img class="hotel-image" src="../../../assets/images/hotel.jpg" alt="">
+                </div>
+                <div class="hotel-detail-container">
+                    <div class="hotel-name">
+                        <a (click)="goToDetail(hotel)">{{hotel.name}}</a>
+                    </div>
+                    <div *ngIf="hotel.star === 1">
+                        <mat-icon class="star">star</mat-icon>
+                    </div>
+                    <div *ngIf="hotel.star === 2">
+                        <mat-icon class="star">star</mat-icon>
+                        <mat-icon class="star">star</mat-icon>
+                    </div>
+                    <div *ngIf="hotel.star === 3">
+                        <mat-icon class="star">star</mat-icon>
+                        <mat-icon class="star">star</mat-icon>
+                        <mat-icon class="star">star</mat-icon>
+                    </div>
+                    <div *ngIf="hotel.star === 4">
+                        <mat-icon class="star">star</mat-icon>
+                        <mat-icon class="star">star</mat-icon>
+                        <mat-icon class="star">star</mat-icon>
+                        <mat-icon class="star">star</mat-icon>
+                    </div>
+                    <div *ngIf="hotel.star === 5">
+                        <mat-icon class="star">star</mat-icon>
+                        <mat-icon class="star">star</mat-icon>
+                        <mat-icon class="star">star</mat-icon>
+                        <mat-icon class="star">star</mat-icon>
+                        <mat-icon class="star">star</mat-icon>
+                    </div>
+                    <div>
+                        <mat-icon>place</mat-icon>
+                        {{hotel.city}} - <a class="blue-text" (click)="switchMap()">SHOW ON MAP</a>
+                    </div>
+                    <div class="blue-text">
+                        <img class="tiket-icon" src="../../../assets/icons/small-tiket-icon.svg" alt="">
+                        {{hotel.rating}}/10
+                    </div>
+                </div>
+            </div>
+            <div class="lower-hotel-card">
+                <span>IDR {{hotel.rooms[0].price}}</span>/room/night
+            </div>
+            
+        </mat-card>
+        <div id="mapid"></div>
+        <div *ngIf="isMap">
+            
+        </div>
+       </div>
+    </div>
+</div>

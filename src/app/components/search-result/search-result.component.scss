@@ -1,15 +1,62 @@
 @import '../../app.component.scss';
 
-mat-sidenav-content{
-    font-family: $mfont;
+#no-flightres{
+    @include dfjccaic();
+    
+}
+#change-search-widget{
+    @include dfjcsaaic()
+}
+
+#search-widget-left{
+    @include dfjcsbaic();
+}
+
+#current-search-detail{
+    @include dfjcsaaic();
+    margin: 20px 0;
+    
+}
+#sticky{
+    position: sticky;
+}
+
+#main-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#main-left{
+    
+    margin-left: 20px;
+}
+mat-checkbox{
+    padding: 10px;
+}
+mat-checkbox:hover{
+    background-color: $hcolor;
+}
+mat-card{
+    margin: 0 0 20px 0;
+    width: 80vw;
+    
+}
+
+#filter-container{
+    @include dfjcsbaic();
+}
+.expanel-container{
+    display: flex;
+    flex-direction: column;
 }
 .blue-text{
     color: $hcolor;
 }
 
 .flight-container{
-    padding: 10px;
-    margin: 10px;
+    
+    min-width: 500px;
+    width: calc(100vw+0.2em);
 }
 .flight-detail-container{
     @include dfjcsbaic();
@@ -26,7 +73,73 @@ mat-sidenav-content{
     @include yellowbutton();
 }
 .flight-last{
-    display: flex;
-    justify-content: flex-end;
+    @include dfjcsbaic();
+}
+.detail-container{
+    @include dfjcsaaic();
+}
+.detail-container>div{
+    margin-left: 10px;
+    color: $hcolor;
+}
+.current-detail-content{
+    display:none;
+    padding: 10px;
+
 }
 
+.current-price-content{
+    display:none;
+    padding: 10px;
+}
+ul>li{
+    @include dfjcsbaic();
+}
+
+.facilities-icon{
+    @include dfjcsaaic();
+}
+img{
+    width:20px;
+    height: 20px;
+}
+.spacer{
+    width: 20px;
+    height: 20px;
+}
+mat-tab-group{
+    width: 100%;
+}
+.button-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#sort-widget{
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    div{
+        margin-right: 110px;
+    }
+    div>ul{
+        z-index: 1;
+        background-color: $bcolor;
+        padding: 10px;
+        display: none;
+        position: absolute;
+        li{
+            margin: 5px 0;
+            padding: 10px 0;
+        }
+        li:hover{
+            background-color: $hcolor;
+        }
+    }
+    div:hover{
+        ul{display: block;}
+    }
+}

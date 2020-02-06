@@ -1,0 +1,86 @@
+@import '../../app.component.scss';
+
+.marginned{
+    margin: 0 50px;
+}
+
+.star{
+    color: #FADA5E;
+}
+
+#first-main-card{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#hotel-name{
+    font-size: 23px;
+    margin-right: 10px;
+}
+
+.blue-text{
+    color: $hcolor;
+}
+
+#rating-container{
+    @include dfjcsaaic();
+}
+#facility-container{
+    @include dfjcsaaic();
+    flex-basis: 50%;
+    
+}
+.bed-image{
+    width: 200px;
+    height: 100%;
+    margin-right: 10px;
+}
+.bigger-text{
+    font-size: 18px;
+}
+.book-button{
+    background-color: $ycolor;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.yellow{
+    color: $ycolor;
+}
+
+.grey-text{
+    color: #888;
+}
+
+#mapid{
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+}
+.main-card-content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.room-inner-content-parent{
+    width: 100%;
+}
+.room-inner-content{
+    @include dfjcsbaic();
+    width: 100%;
+}
+
+.room-feature-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.book-container{
+    @include dfjcsaaic();
+    flex-direction: column;
+}

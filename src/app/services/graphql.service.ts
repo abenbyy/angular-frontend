@@ -4,6 +4,7 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Query } from '../models/query';
 import { User } from '../models/user';
+import { FlightFilter } from '../models/flightfilter';
 
 @Injectable({
   providedIn: 'root'
@@ -99,7 +100,20 @@ export class GraphqlService {
           departure,
           arrival,
           price,
-          duration
+          duration,
+          facilities{
+            name,
+          },
+          routes{
+            from,
+            fromcode,
+            to,
+            tocode,
+            flightduration,
+            transitduration,
+            aeroplanetype,
+            aeroplanename,
+          },
         }
       }`,
       variables:{
@@ -108,6 +122,107 @@ export class GraphqlService {
       }
     })
   }
+  filterFlights(filters: FlightFilter):Observable<Query>{
+    
+    return this.apollo.query<Query>({
+      query: gql`
+        query FilterFlight($reqairlines: [String], $reqfacilities: [String], $reqdepartures: [Int], $reqarrivals: [Int], $reqduration: Int){
+          filterflights(airlines:$reqairlines, facilities:$reqfacilities, departures:$reqdepartures, arrivals:$reqarrivals, duration:$reqduration){
+            airline{
+              name,
+            },
+            from{
+              name,
+              code,
+              city,
+              citycode,
+              country,
+              province
+            },
+            to{
+              name,
+              code,
+              city,
+              citycode,
+              country,
+              province
+              
+            },
+            departure,
+            arrival,
+            price,
+            duration,
+            facilities{
+              name,
+            },
+            routes{
+              from,
+              fromcode,
+              to,
+              tocode,
+              flightduration,
+              transitduration,
+              aeroplanetype,
+              aeroplanename,
+            },
+          }
+        }
+      `,
+      variables:{
+        "reqairlines": filters.airlines,
+        "reqfacilities": filters.facilities,
+        "reqdepartures": filters.departurehours,
+        "reqarrivals": filters.arrivalhours,
+        "reqduration": filters.hours
+      }
+    })
+  }
+
+  searchHotels(cty: string):Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+        query SearchHotel($cty: String){
+          searchhotel(city:$cty){
+            name,
+            address,
+            rating,
+            star,
+            locationrate,
+            cleanrate,
+            roomrate,
+            servicerate,
+            rooms{
+              name,
+              maxguest,
+              roomsize,
+              beddetail,
+              breakfast,
+              wifi,
+              price,
+            }, 
+            facilities{
+              ac,
+              parking,
+              receptionist,
+              pool,
+              lift,
+              restaurant,
+              wifi,
+              spa,
+            },
+            city,
+            province,
+            latitude,
+            longitude,
+            zoomlevel,
+          }
+        }`,
+      variables:{
+        "cty": cty,
+      }
+    })
+  }
+
   getStations():Observable<Query>{
     return this.apollo.query<Query>({
       query: gql`

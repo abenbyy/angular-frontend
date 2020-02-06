@@ -1,38 +1,329 @@
-<mat-sidenav-container>
-    <mat-sidenav mode="side" opened>Test Side</mat-sidenav>
-    <mat-sidenav-content>
-        <div class="flight-container" *ngFor="let flight of flights; let i = index">
-            <div>{{flight.airline.name}}</div>
-            <div class="flight-detail-container">
-                <div class="flight-leftside">
-                    <div>
-                        <img src="" alt="">
+<mat-divider></mat-divider>
+<div id="sticky">
+    <div id="current-search-detail">
+        <div>
+            <div>Select Departure Flight</div>
+            <div>
+                <mat-icon>flight_takeoff</mat-icon>
+                    {{selectedFrom}} 
+                <mat-icon>trending_flat</mat-icon>
+                <mat-icon>flight_land</mat-icon>
+                    {{selectedTo}}
+                
+            </div>
+        </div>
+        <div>
+            <button class="yellow-button" matButton (click)="openModal()">CHANGE SEARCH</button>
+        </div>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<div id="sort-widget">
+    <div>
+        Sort by
+        <mat-icon>sort</mat-icon>
+        <ul>
+            <li><a (click)="sortByLowestPrice()">Reccomendation</a></li>
+            <li><a (click)="sortByLowestPrice()">Lowest Price</a></li>
+            <li><a (click)="sortByEarliestDeparture()">Earliest Departure</a></li>
+            <li><a (click)="sortByLatestDeparture()">Latest Departure</a></li>
+            <li><a (click)="sortByEarliestArrival()">Earliest Arrival</a></li>
+            <li><a (click)="sortByLatestArrival()">Latest Arrival</a></li>
+            <li><a (click)="sortByShortestDuration()">Shortest Duration</a></li>
+        </ul>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<div id="main-container">
+    <div id="main-left">
+        <div id="filter-container">
+            <div>FILTERS</div>
+            <button class="blue-text" (click)="resetFilter()">RESET</button>
+        </div>
+        
+        <mat-accordion multi="true">
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Airlines
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expanel-container">
+                    <mat-checkbox [(ngModel)]="checkBool[0]" class="chkbox" (click)="filterAirline('Batik')">Batik Air</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[1]" class="chkbox" (click)="filterAirline('Citilink')">Citilink Indonesia</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[2]" class="chkbox" (click)="filterAirline('Garuda')">Garuda Indonesia</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[3]" class="chkbox" (click)="filterAirline('Lion Air')">Lion Air</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[4]" class="chkbox" (click)="filterAirline('Sriwijaya')">Sriwijaya Air</mat-checkbox>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Facilities
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expanel-container">
+                    <mat-checkbox [(ngModel)]="checkBool[5]" class="chkbox" (click)="filterFacility('Baggage')">Baggage</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[6]" class="chkbox" (click)="filterFacility('Entertainment')">Entertainment</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[7]" class="chkbox" (click)="filterFacility('Meal')">Meal</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[8]" class="chkbox" (click)="filterFacility('USB port')">USB port / Power</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[9]" class="chkbox" (click)="filterFacility('Wi-Fi')">Wi-Fi</mat-checkbox>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Times
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expanel-container">
+                    <div>Departure</div>
+                    <mat-checkbox [(ngModel)]="checkBool[10]" class="chkbox" (click)="filterDeparture(0)">00:00 - 06:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[11]" class="chkbox" (click)="filterDeparture(6)">06:00 - 12:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[12]" class="chkbox" (click)="filterDeparture(12)">12:00 - 18:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[13]" class="chkbox" (click)="filterDeparture(18)">18:00 - 24:00</mat-checkbox>
+                    <div>Arrival</div>
+                    <mat-checkbox [(ngModel)]="checkBool[14]" class="chkbox" (click)="filterArrival(0)">00:00 - 06:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[15]" class="chkbox" (click)="filterArrival(6)">06:00 - 12:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[16]" class="chkbox" (click)="filterArrival(12)">12:00 - 18:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[17]" class="chkbox" (click)="filterArrival(18)">18:00 - 24:00</mat-checkbox>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Trip duration
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div>Total: 0h - 22h</div>
+                <mat-slider #time thumbLabel [displayWith]="formatLabel" (change)="filterDuration($event)" [value]="time" tickInterval="1" min="1" max="22">
+
+                </mat-slider>
+            </mat-expansion-panel>
+            
+        </mat-accordion>
+    
+
+    </div>
+    <div id="main-right">
+        <div id="no-flightres" *ngIf="flights.length === 0">
+            No Flights Available :( 
+        </div>
+       <div *ngIf="flights.length > 0">
+            <mat-card class="flight-container" *ngFor="let flight of displayedFlights; let i = index">
+                <div>{{flight.airline.name}}</div>
+                <div class="flight-detail-container">
+                    <div class="flight-leftside">
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                        <div class="flight-time">
+                            <div *ngIf="departureHours[i]<10&&departureMinutes[i]<10">0{{departureHours[i]}}:0{{departureMinutes[i]}}</div>
+                            <div *ngIf="departureHours[i]<10&&departureMinutes[i]>9">0{{departureHours[i]}}:{{departureMinutes[i]}}</div>
+                            <div *ngIf="departureHours[i]>9&&departureMinutes[i]<10">{{departureHours[i]}}:0{{departureMinutes[i]}}</div>
+                            <div *ngIf="departureHours[i]>9&&departureMinutes[i]>9">{{departureHours[i]}}:{{departureMinutes[i]}}</div>
+                            <div>{{flight.from.code}}</div>
+                        </div>
+                        <mat-icon>trending_flat</mat-icon>
+                        <div class="flight-time">
+                            <div *ngIf="arrivalHours[i]<10&&arrivalMinutes[i]<10">0{{arrivalHours[i]}}:0{{arrivalMinutes[i]}}</div>
+                            <div *ngIf="arrivalHours[i]<10&&arrivalMinutes[i]>9">0{{arrivalHours[i]}}:{{arrivalMinutes[i]}}</div>
+                            <div *ngIf="arrivalHours[i]>9&&arrivalMinutes[i]<10">{{arrivalHours[i]}}:0{{arrivalMinutes[i]}}</div>
+                            <div *ngIf="arrivalHours[i]>9&&arrivalMinutes[i]>9">{{arrivalHours[i]}}:{{arrivalMinutes[i]}}</div>
+                            <div>{{flight.to.code}}</div>
+                        </div>
                     </div>
-                    <div class="flight-time">
+                    {{flight.duration}} Minutes
+                    <div class="facilities-icon">
+                        <div *ngIf="flightFacilities[i].includes('Baggage')"><img src="../../../assets/icons/baggage.png" alt=""></div>
+                        <div class="spacer" *ngIf="!flightFacilities[i].includes('Baggage')"></div>
+                        <div *ngIf="flightFacilities[i].includes('Entertainment')"><img src="../../../assets/icons/entertainment.png" alt=""></div>
+                        <div class="spacer" *ngIf="!flightFacilities[i].includes('Entertainment')"></div>
+                        <div *ngIf="flightFacilities[i].includes('Meal')"><img src="../../../assets/icons/meal.png" alt=""></div>
+                        <div class="spacer" *ngIf="!flightFacilities[i].includes('Meal')"></div>
+                    </div>
+                    <div>
+                        <strong class="blue-text">IDR {{flight.price}}</strong>/pax
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="yellow-button">SELECT</button>
+                </div>
+                <div class="flight-last">
+                    <mat-tab-group>
+                        <mat-tab></mat-tab>
+                        <mat-tab label="Flight Details" class="current-detail-content" (click)="toggleDetail(i)">
+                            <div *ngIf="displayedFlights[i].routes.length === 0">
+                                <br>
+                                <mat-divider></mat-divider>
+                                <br>
+                                <div>Departure: </div>
+                                <div *ngIf="departureHours[i]<10&&departureMinutes[i]<10">0{{departureHours[i]}}:0{{departureMinutes[i]}}</div>
+                                <div *ngIf="departureHours[i]<10&&departureMinutes[i]>9">0{{departureHours[i]}}:{{departureMinutes[i]}}</div>
+                                <div *ngIf="departureHours[i]>9&&departureMinutes[i]<10">{{departureHours[i]}}:0{{departureMinutes[i]}}</div>
+                                <div *ngIf="departureHours[i]>9&&departureMinutes[i]>9">{{departureHours[i]}}:{{departureMinutes[i]}}</div>
+                                <div>{{displayedFlights[i].from.name}} ({{displayedFlights[i].from.code}})</div>
+                                <br>
+                                <div>Flight Duration: {{displayedFlights[i].duration}}m</div>
+                                <div>GA-123 | Boeing 787-800</div>
+                                <br>
+                                <div>Arrival: </div>
+                                <div *ngIf="arrivalHours[i]<10&&arrivalMinutes[i]<10">0{{arrivalHours[i]}}:0{{arrivalMinutes[i]}}</div>
+                                <div *ngIf="arrivalHours[i]<10&&arrivalMinutes[i]>9">0{{arrivalHours[i]}}:{{arrivalMinutes[i]}}</div>
+                                <div *ngIf="arrivalHours[i]>9&&arrivalMinutes[i]<10">{{arrivalHours[i]}}:0{{arrivalMinutes[i]}}</div>
+                                <div *ngIf="arrivalHours[i]>9&&arrivalMinutes[i]>9">{{arrivalHours[i]}}:{{arrivalMinutes[i]}}</div>
+                                <div>{{displayedFlights[i].to.name}} ({{displayedFlights[i].to.code}})</div>
+                               </div>
+            
+            
+                               <div *ngIf="displayedFlights[i].routes.length > 0">
+                                <div *ngFor="let route of displayedFlights[i].routes">
+                                    <br>
+                                    <mat-divider></mat-divider>
+                                    <br>
+                                    <div>Departure: </div>
+                                    <div *ngIf="departureHours[i]<10&&departureMinutes[i]<10">0{{departureHours[i]}}:0{{departureMinutes[i]}}</div>
+                                    <div *ngIf="departureHours[i]<10&&departureMinutes[i]>9">0{{departureHours[i]}}:{{departureMinutes[i]}}</div>
+                                    <div *ngIf="departureHours[i]>9&&departureMinutes[i]<10">{{departureHours[i]}}:0{{departureMinutes[i]}}</div>
+                                    <div *ngIf="departureHours[i]>9&&departureMinutes[i]>9">{{departureHours[i]}}:{{departureMinutes[i]}}</div>
+                                    <div>{{route.from}} ({{route.fromcode}})</div>
+                                    <br>
+                                    <div *ngIf="route.transitduration > 0">
+                                        Transit Duration:
+                                        {{route.transitduration}}m
+                                    </div>
+            
+                                    <div>Flight Duration: {{route.flightduration}}m</div>
+                                    <div>{{route.aeroplanename}} | {{route.aeroplanetype}}</div>
+                                    <br>
+                                    <div>Arrival: </div>
+                                    <div *ngIf="arrivalHours[i]<10&&arrivalMinutes[i]<10">0{{arrivalHours[i]}}:0{{arrivalMinutes[i]}}</div>
+                                    <div *ngIf="arrivalHours[i]<10&&arrivalMinutes[i]>9">0{{arrivalHours[i]}}:{{arrivalMinutes[i]}}</div>
+                                    <div *ngIf="arrivalHours[i]>9&&arrivalMinutes[i]<10">{{arrivalHours[i]}}:0{{arrivalMinutes[i]}}</div>
+                                    <div *ngIf="arrivalHours[i]>9&&arrivalMinutes[i]>9">{{arrivalHours[i]}}:{{arrivalMinutes[i]}}</div>
+                                    <div>{{route.to}} ({{route.tocode}})</div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Price Details" class="current-price-content" (click)="togglePrice(i)">
+                            <mat-divider></mat-divider>
+                            <br>
+                            <div>
+                                <ul>
+                                    Fare
+                                    <li>
+                                        <div>Adult (x1)</div>
+                                        <div>IDR {{flight.price}}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <br>
+                            <div>
+                                <ul>
+                                    Tax and other fees
+                                    <li>
+                                        <div>Tax</div>
+                                        <div>Included</div>
+                                    </li>
+                                    <li>
+                                        <div>Passenger service charge</div>
+                                        <div>FREE</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </mat-tab  >
+                    </mat-tab-group>
+                    <div class="detail-container">
+                        <!--<div class="current-detail" (click)="toggleDetail(i)">Flight Details
+                            
+                        </div>-->
+                        <!--<div class="current-price" (click)="togglePrice(i)">Price Details
+                            
+                        </div>-->
+                    </div>
+                    
+                </div>
+                <!--<div class="current-detail-content">
+                  <div *ngIf="displayedFlights[i].routes.length === 0">
+                    <br>
+                    <mat-divider></mat-divider>
+                    <br>
+                    <div>Departure: </div>
+                    <div *ngIf="departureHours[i]<10&&departureMinutes[i]<10">0{{departureHours[i]}}:0{{departureMinutes[i]}}</div>
+                    <div *ngIf="departureHours[i]<10&&departureMinutes[i]>9">0{{departureHours[i]}}:{{departureMinutes[i]}}</div>
+                    <div *ngIf="departureHours[i]>9&&departureMinutes[i]<10">{{departureHours[i]}}:0{{departureMinutes[i]}}</div>
+                    <div *ngIf="departureHours[i]>9&&departureMinutes[i]>9">{{departureHours[i]}}:{{departureMinutes[i]}}</div>
+                    <div>{{displayedFlights[i].from.name}} ({{displayedFlights[i].from.code}})</div>
+                    <br>
+                    <div>Flight Duration: {{displayedFlights[i].duration}}m</div>
+                    <div>GA-123 | Boeing 787-800</div>
+                    <br>
+                    <div>Arrival: </div>
+                    <div *ngIf="arrivalHours[i]<10&&arrivalMinutes[i]<10">0{{arrivalHours[i]}}:0{{arrivalMinutes[i]}}</div>
+                    <div *ngIf="arrivalHours[i]<10&&arrivalMinutes[i]>9">0{{arrivalHours[i]}}:{{arrivalMinutes[i]}}</div>
+                    <div *ngIf="arrivalHours[i]>9&&arrivalMinutes[i]<10">{{arrivalHours[i]}}:0{{arrivalMinutes[i]}}</div>
+                    <div *ngIf="arrivalHours[i]>9&&arrivalMinutes[i]>9">{{arrivalHours[i]}}:{{arrivalMinutes[i]}}</div>
+                    <div>{{displayedFlights[i].to.name}} ({{displayedFlights[i].to.code}})</div>
+                   </div>
+
+
+                   <div *ngIf="displayedFlights[i].routes.length > 0">
+                    <div *ngFor="let route of displayedFlights[i].routes">
+                        <br>
+                        <mat-divider></mat-divider>
+                        <br>
+                        <div>Departure: </div>
                         <div *ngIf="departureHours[i]<10&&departureMinutes[i]<10">0{{departureHours[i]}}:0{{departureMinutes[i]}}</div>
                         <div *ngIf="departureHours[i]<10&&departureMinutes[i]>9">0{{departureHours[i]}}:{{departureMinutes[i]}}</div>
                         <div *ngIf="departureHours[i]>9&&departureMinutes[i]<10">{{departureHours[i]}}:0{{departureMinutes[i]}}</div>
                         <div *ngIf="departureHours[i]>9&&departureMinutes[i]>9">{{departureHours[i]}}:{{departureMinutes[i]}}</div>
-                        <div>{{flight.from.code}}</div>
-                    </div>
-                
-                    <div class="flight-time">
+                        <div>{{route.from}} ({{route.fromcode}})</div>
+                        <br>
+                        <div *ngIf="route.transitduration > 0">
+                            Transit Duration:
+                            {{route.transitduration}}m
+                        </div>
+
+                        <div>Flight Duration: {{route.flightduration}}m</div>
+                        <div>{{route.aeroplanename}} | {{route.aeroplanetype}}</div>
+                        <br>
+                        <div>Arrival: </div>
                         <div *ngIf="arrivalHours[i]<10&&arrivalMinutes[i]<10">0{{arrivalHours[i]}}:0{{arrivalMinutes[i]}}</div>
                         <div *ngIf="arrivalHours[i]<10&&arrivalMinutes[i]>9">0{{arrivalHours[i]}}:{{arrivalMinutes[i]}}</div>
                         <div *ngIf="arrivalHours[i]>9&&arrivalMinutes[i]<10">{{arrivalHours[i]}}:0{{arrivalMinutes[i]}}</div>
                         <div *ngIf="arrivalHours[i]>9&&arrivalMinutes[i]>9">{{arrivalHours[i]}}:{{arrivalMinutes[i]}}</div>
-                        <div>{{flight.to.code}}</div>
+                        <div>{{route.to}} ({{route.tocode}})</div>
                     </div>
+                   </div>
                 </div>
-                {{flight.duration}} Minutes
-                <div>
-                    <strong class="blue-text">IDR {{flight.price}}</strong>/pax
-                </div>
-            </div>
-            <div class="flight-last">
-                <button class="yellow-button">SELECT</button>
-            </div>
-            <mat-divider></mat-divider>
-        </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+                <div class="current-price-content">
+                   <mat-divider></mat-divider>
+                    <br>
+                   <div>
+                       <ul>
+                           Fare
+                           <li>
+                               <div>Adult (x1)</div>
+                               <div>IDR {{flight.price}}</div>
+                           </li>
+                       </ul>
+                   </div>
+                   <br>
+                   <div>
+                       <ul>
+                           Tax and other fees
+                           <li>
+                               <div>Tax</div>
+                               <div>Included</div>
+                           </li>
+                           <li>
+                               <div>Passenger service charge</div>
+                               <div>FREE</div>
+                           </li>
+                       </ul>
+                   </div>
+                </div>-->
+            </mat-card>
+       </div>
+    </div>
+</div>

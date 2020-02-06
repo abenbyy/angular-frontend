@@ -1,0 +1,27 @@
+<div>Find Flights</div>
+<div id="change-search-widget" *ngIf="data.type === 'flight'">
+    <div id="search-widget-left">
+        <mat-form-field>
+            <mat-label>From</mat-label>
+            <mat-select [(ngModel)]="selectedFrom" name="from">
+                <mat-option *ngFor="let airport of airports" [value]="airport.city">{{airport.city}}, {{airport.country}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+
+            <mat-label>To</mat-label>
+            <mat-select [(ngModel)]="selectedTo" name="to">
+                <mat-option *ngFor="let airport of airports" [value]="airport.city">{{airport.city}}, {{airport.country}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div id="search-widget-right">
+        <button class="yellow-button" matButton (click)="changeSearch()">SEARCH</button>
+    </div>
+</div>

@@ -4,6 +4,9 @@ import { QuickSearchComponent } from './components/quick-search/quick-search.com
 import { ProfileComponent } from './components/profile/profile.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SearchTrainComponent } from './components/search-train/search-train.component';
+import { HomepageSliderComponent } from './components/homepage-slider/homepage-slider.component';
+import { SearchHotelComponent } from './components/search-hotel/search-hotel.component';
+import { HotelDetailComponent } from './components/hotel-detail/hotel-detail.component';
 
 
 const routes: Routes = [
@@ -11,6 +14,10 @@ const routes: Routes = [
     path:'',
     component: QuickSearchComponent
   },
+  // {
+  //   path:'',
+  //   component: HomepageSliderComponent
+  // },
   {
     path:'profile',
     component: ProfileComponent
@@ -28,8 +35,16 @@ const routes: Routes = [
     component: SearchResultComponent
   },
   {
+    path:'searchhotel',
+    component: SearchHotelComponent
+  },
+  {
     path:'searchtrip',
     component: SearchTrainComponent
+  },
+  {
+    path:'detailpage',
+    component: HotelDetailComponent,
   }
 
 

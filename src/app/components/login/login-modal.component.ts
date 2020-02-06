@@ -103,7 +103,9 @@ export class LoginModalComponent implements OnInit {
 
   public googleSignIn() {
     this.googleLoginService.signIn()
+    
     this.logDialog.closeAll()
+    
   }
 
   public validateLogin(){    

@@ -7,6 +7,8 @@ import { GraphqlService } from 'src/app/services/graphql.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Flight } from 'src/app/models/flight';
 import { Trip } from 'src/app/models/trip';
+import { Hotel } from 'src/app/models/hotel';
+import { async } from '@angular/core/testing';
 
 
 @Component({
@@ -31,7 +33,15 @@ export class QuickSearchComponent implements OnInit {
 
   selectedFrom: string
   selectedTo  : string
+
+  selectedCity: string
+
+  cities = [{
+    value: "Jakarta",
+    display: "Jakarta, Indonesia",
+  }]
   
+  imgIcons: HTMLElement[]
   constructor(
     private searchService : SearchService,
     private graphqlService : GraphqlService,
@@ -39,7 +49,11 @@ export class QuickSearchComponent implements OnInit {
   ) { }
   
   changeSelected(idx){
+    this.imgIcons[this.idx].style.borderWidth= "2px"
+    this.imgIcons[this.idx].style.borderColor= "#58627a"
     this.idx = idx;
+    this.imgIcons[this.idx].style.borderWidth= "2.5px"
+    this.imgIcons[this.idx].style.borderColor= "#0064d2"
     this.message = this.descriptions[this.idx];
     this.icon = this.icons[this.idx];
     this.type=this.types[this.idx];
@@ -52,26 +66,34 @@ export class QuickSearchComponent implements OnInit {
         this.airport$ = this.graphqlService.getAirports()
         .subscribe(async query => {
           this.airports = query.data.airports
-          await console.log(this.airports)
+          this.searchService.airports = this.airports
         })
         break;
       case 2:
         this.station$ = this.graphqlService.getStations()
         .subscribe(async query =>{
           this.stations = query.data.stations
-          await console.log(this.stations)
+          
         })
         break;
     }
   }
 
   ngOnInit() {
-    console.log(this.searchService.isSpecified)
-    console.log(this.searchService.specIdx)
+    var temp
+    window.onload = function(){
+      var temp = document.querySelectorAll(".img-container")
+      this.imgIcons = []
+      
+      for(let i=0;i<temp.length;i++){
+        this.imgIcons.push(temp[i] as HTMLElement)
+      }
 
+      this.imgIcons[0].style.borderWidth= "2.5px"
+      this.imgIcons[0].style.borderColor= "#0064d2"
+    }.bind(this)
     if(this.router.url === "/"){
       this.searchService.isSpecified = false
-
     }
     if(this.searchService.isSpecified === true){
       this.idx = this.searchService.specIdx
@@ -99,14 +121,30 @@ export class QuickSearchComponent implements OnInit {
   trip$ : Subscription
   trips : Trip[]
 
+  hotel$: Subscription
+  
   search():void{
+    
     switch(this.idx){
       case 0:
         this.flight$ = this.graphqlService.searchFlights(this.selectedFrom,this.selectedTo)
         .subscribe(async query =>{
           this.flights = query.data.searchflight
+          this.searchService.selectedFlightFrom = this.selectedFrom
+          this.searchService.selectedFlightTo = this.selectedTo
           await this.insertFlight()
+          
         })
+        break;
+
+      case 1:
+          this.hotel$ = this.graphqlService.searchHotels(this.selectedCity)
+          .subscribe(async query=>{
+            this.searchService.hotelResult = query.data.searchhotel
+            this.searchService.selectedHotelCity = this.selectedCity
+            await this.router.navigate(['./searchhotel'])
+          })
+
         break;
       case 2:
         this.trip$ = this.graphqlService.searchTrips(this.selectedFrom,this.selectedTo)
@@ -114,6 +152,7 @@ export class QuickSearchComponent implements OnInit {
           this.trips = query.data.searchtrip
           await this.insertTrip()
         })
+        break;
     }
       
 

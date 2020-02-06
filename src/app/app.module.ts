@@ -72,6 +72,10 @@ import { GoogleLoginService } from './services/google-login.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SearchTrainComponent } from './components/search-train/search-train.component';
+import { HomepageSliderComponent } from './components/homepage-slider/homepage-slider.component';
+import { ChangeSearchWidgetComponent } from './components/change-search-widget/change-search-widget.component';
+import { SearchHotelComponent } from './components/search-hotel/search-hotel.component';
+import { HotelDetailComponent } from './components/hotel-detail/hotel-detail.component';
 
 
 let GOOGLEAUTH_ID:string = "385839845308-kc4slf9ji1rufjj36bf246l4rhjfm9n7.apps.googleusercontent.com";
@@ -142,11 +146,16 @@ ScrollingModule,
     FooterComponent,
     ProfileComponent,
     SearchResultComponent,
+    SearchHotelComponent,
     SearchTrainComponent,
+    HomepageSliderComponent,
+    ChangeSearchWidgetComponent,
+    HotelDetailComponent
     
   ],
   entryComponents:[
     LoginModalComponent,
+    ChangeSearchWidgetComponent,
   ],
   imports: [
     BrowserModule,
@@ -162,6 +171,7 @@ ScrollingModule,
     FormsModule,
     GraphQLModule,
     HttpClientModule,
+    
   ],
   providers: [
     

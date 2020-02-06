@@ -1,3 +1,8 @@
+html{
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+}
 *{
     margin:0px;
     padding: 0px;
@@ -8,6 +13,7 @@
 $mcolor : #58627a;
 $bcolor : #F7F7F7;
 $hcolor: #0064d2;
+$ycolor: #FF7200;
 $buttoncolor: #FEDD00;
 $formbcolor: #F6F9FF;
 $formgraycolor: #f5f6fa;
@@ -78,4 +84,7 @@ $mfont: OpenSansFont;
     padding: 12px 24px;
     border:none;
     border-radius: 24px;
+}
+app-footer{
+    width: 100vw;
 }

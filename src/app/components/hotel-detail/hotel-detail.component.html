@@ -1,0 +1,198 @@
+<div clas="main-container">
+    <mat-card class="marginned">
+        <br>
+        <div id="first-main-card">
+            <div id="hotel-name">
+                {{selectedHotel.name}}
+            </div>
+            <div *ngIf="selectedHotel.star === 1">
+                <mat-icon class="star">star</mat-icon>
+            </div>
+            <div *ngIf="selectedHotel.star === 2">
+                <mat-icon class="star">star</mat-icon>
+                <mat-icon class="star">star</mat-icon>
+            </div>
+            <div *ngIf="selectedHotel.star === 3">
+                <mat-icon class="star">star</mat-icon>
+                <mat-icon class="star">star</mat-icon>
+                <mat-icon class="star">star</mat-icon>
+            </div>
+            <div *ngIf="selectedHotel.star === 4">
+                <mat-icon class="star">star</mat-icon>
+                <mat-icon class="star">star</mat-icon>
+                <mat-icon class="star">star</mat-icon>
+                <mat-icon class="star">star</mat-icon>
+            </div>
+            <div *ngIf="selectedHotel.star === 5">
+                <mat-icon class="star">star</mat-icon>
+                <mat-icon class="star">star</mat-icon>
+                <mat-icon class="star">star</mat-icon>
+                <mat-icon class="star">star</mat-icon>
+                <mat-icon class="star">star</mat-icon>
+            </div>
+        </div>
+        <div>
+            {{selectedHotel.address}}
+        </div>
+        <div>
+            <a class="blue-text">SHOW ON MAP</a>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+        <br>
+        <div class="bigger-text">What people say about this property</div>
+        <br>
+        <div id="rating-container">
+            <div>
+                <div>
+                    <mat-icon>location_on</mat-icon>
+                    <span class="bigger-text">Location</span>
+                </div>
+                <div>
+                    Loved by <span class="blue-text">{{selectedHotel.locationrate}}%</span> traveller
+                    <br>
+                    Complimented on 71 reviews
+                </div>
+            </div>
+            <div>
+                <div>
+                    <mat-icon>bathtub</mat-icon>
+                    <span class="bigger-text">Cleanliness</span>
+                </div>
+                <div>
+                    Loved by <span class="blue-text">{{selectedHotel.cleanrate}}%</span> traveller
+                    <br>
+                    Complimented on 72 reviews
+                </div>
+            </div>
+            <div>
+                <div>
+                    <mat-icon>meeting_room</mat-icon>
+                    <span class="bigger-text">Room</span>
+                </div>
+                <div>
+                    Loved by <span class="blue-text">{{selectedHotel.roomrate}}%</span> traveller
+                    <br>
+                    Complimented on 65 reviews
+                </div>
+            </div>
+            <div>
+                <div>
+                    <mat-icon>room_service</mat-icon>
+                    <span class="bigger-text">Service</span>
+                </div>
+                <div>
+                    Loved by <span class="blue-text">{{selectedHotel.servicerate}}%</span> traveller
+                    <br>
+                    Complimented on 80 reviews
+                </div>
+            </div>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+        <br>
+        <div class="bigger-text">Facilities</div>
+        <br>
+
+        <div id="facility-container">
+            <div *ngIf="selectedHotel.facilities[0].ac">
+                <mat-icon>ac_unit</mat-icon>
+                <span>AC</span>
+            </div>
+            <div *ngIf="selectedHotel.facilities[0].parking">
+                <mat-icon>local_parking</mat-icon>
+                <span>Parking</span>
+            </div>
+            <div *ngIf="selectedHotel.facilities[0].receptionist">
+                <mat-icon>face</mat-icon>
+                <span>24 Hour-Frontdesk</span>
+            </div>
+            <div *ngIf="selectedHotel.facilities[0].pool">
+                <mat-icon>pool</mat-icon>
+                <span>Swimming Pool</span>
+            </div>
+            <div *ngIf="selectedHotel.facilities[0].lift">
+                <mat-icon>nfc</mat-icon>
+                <span>Elevator</span>
+            </div>
+            <div *ngIf="selectedHotel.facilities[0].restaurant">
+                <mat-icon>restaurant</mat-icon>
+                <span>Restaurant</span>
+            </div>
+            <div *ngIf="selectedHotel.facilities[0].wifi">
+                <mat-icon>wifi</mat-icon>
+                <span>Wifi</span>
+            </div>
+            <div *ngIf="selectedHotel.facilities[0].spa">
+                <mat-icon>spa</mat-icon>
+                <span>Spa</span>
+            </div>
+        </div>
+        <br>
+    </mat-card>
+    <br>
+    <br>
+    <mat-card class="marginned" *ngFor="let room of selectedHotel.rooms">
+        <br>
+        <div class="main-card-content">
+            <div>
+                <img class="bed-image" src="../../../assets/images/bedroom.jpg" alt="">
+            </div>
+            <div class="room-inner-content-parent">
+                <div class="room-inner-content">
+                    <div class="room-feature-content">
+                        <div>
+                            <div>Room Info</div>
+                            <div>
+                                <mat-icon class="blue-text">person</mat-icon>
+                                <span>Max. {{room.maxguest}}</span>
+                            </div>
+                            <div>
+                                <mat-icon class="blue-text">crop_square</mat-icon>
+                                <span>{{room.roomsize}}m</span>
+                            </div>
+                            <div>
+                                <mat-icon class="blue-text">single_bed</mat-icon>
+                                <span>{{room.beddetail}}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div>Free Services</div>
+                            <div *ngIf="room.breakfast">
+                                <mat-icon class="blue-text">restaurant_menu</mat-icon>
+                                <span>Free Breakfast</span>
+                            </div>
+                            <div class="grey-text" *ngIf="!room.breakfast">
+                                <mat-icon>not_interested</mat-icon>
+                                <span>No Breakfast</span>
+                            </div>
+                            <div *ngIf="room.wifi">
+                                <mat-icon class="blue-text">wifi</mat-icon>
+                                <span>Free Wifi</span>
+                            </div>
+                            <div class="grey-text" *ngIf="!room.wifi">
+                                <mat-icon>wifi_off</mat-icon>
+                                <span>No Wifi</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-container">
+                        <div>
+                            <span class="yellow bigger-text">IDR {{room.price}}</span>
+                            <span>/room/night</span>
+                        </div>
+                        <br>
+                        <button matButton class="book-button">Book Now</button>
+                    </div>
+                </div>
+                <br>
+                <div class="blue-text">DETAILS</div>
+            </div>
+        </div>
+        <br>
+    </mat-card>
+
+    <mat-card class="marginned">
+        <div id="mapid"></div>
+    </mat-card>
+</div>

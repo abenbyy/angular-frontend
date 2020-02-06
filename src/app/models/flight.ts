@@ -1,5 +1,7 @@
 import { Airport } from './airport';
 import { Airline } from './airline';
+import { FlightFacility } from './flightfacility';
+import { FlightRoute } from './flightroute';
 
 export class Flight {
 
@@ -10,5 +12,6 @@ export class Flight {
     arrival  : Date
     price    : number
     duration : number
-
+    facilities: FlightFacility[]
+    routes  : FlightRoute[]
 }

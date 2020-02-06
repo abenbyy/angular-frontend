@@ -1,0 +1,13 @@
+@import '../../app.component.scss';
+
+#change-search-widget{
+    @include dfjcsaaic()
+}
+
+#search-widget-left{
+    @include dfjcsbaic();
+}
+
+.yellow-button{
+    @include yellowbutton();
+}

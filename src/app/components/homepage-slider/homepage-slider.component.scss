@@ -1,0 +1,11 @@
+@import '../../app.component.scss';
+
+#main-slider-container{
+    width: 100vw;
+    background-color: $hcolor;
+    @include dfjccaic();
+    
+}
+.slides{
+    transition: left 400ms linear;
+}
