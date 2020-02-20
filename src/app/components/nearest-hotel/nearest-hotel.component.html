@@ -1,0 +1,24 @@
+<br><br><br>
+<div *ngIf="!isLoading">
+    <div id="text"><span>Reccommended Hotels Near You:</span></div>
+    <br><br><br>
+    <div id="rec-hotel-cont">
+        <mat-card class="rec-hotel" *ngFor="let hotel of hotels">
+            <mat-card-header>
+                <mat-card-title>{{hotel.name}}</mat-card-title>
+                <mat-card-subtitle>{{hotel.city}}</mat-card-subtitle>
+            </mat-card-header>
+            <div class="rec-hotel-img">
+                <img src="../../../assets/images/hotel.jpg" alt="">
+            </div>
+            <br>
+            <mat-card-content class="rec-hotel-price">
+                <div>IDR{{hotel.rooms[0].price}}</div>/room/night
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<div id="loading-div" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+</div>

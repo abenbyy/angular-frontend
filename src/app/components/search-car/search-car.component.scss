@@ -1,0 +1,70 @@
+@import '../../app.component.scss';
+
+.expanel-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+
+    mat-checkbox{
+        padding: 10px;
+    }
+}
+
+#current-search-detail{
+    @include dfjcsaaic()
+
+}
+
+mat-card{
+   min-width: 500px;
+   div{
+       img{
+           min-width: 150px;
+           min-height: 100px;
+           width: 10vw;
+           height: 15vh;
+       }
+   }
+}
+
+.card-car{
+    display: flex;
+}
+.marginned{
+    margin: 0 100px;
+}
+#main-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: calc(90vw+0.2em);
+}
+
+#filter-container{
+    display: flex;
+    flex-direction: row;
+}
+
+#main-right{
+    min-width: calc(75vw + 0.2em);
+}
+
+.yellow-button{
+    @include yellowbutton();
+}
+
+.bigger-text{
+    font-size: 20px;
+}
+
+.blue-text{
+    color: $hcolor;
+}
+
+.car-detail-cont{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

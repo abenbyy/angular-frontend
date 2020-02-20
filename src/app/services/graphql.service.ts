@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import { Query } from '../models/query';
 import { User } from '../models/user';
 import { FlightFilter } from '../models/flightfilter';
+import { HotelFilter } from '../models/hotelfilter';
 
 @Injectable({
   providedIn: 'root'
@@ -198,6 +199,8 @@ export class GraphqlService {
               beddetail,
               breakfast,
               wifi,
+              freecancel,
+              payathotel,
               price,
             }, 
             facilities{
@@ -210,6 +213,15 @@ export class GraphqlService {
               wifi,
               spa,
             },
+            reviews{
+              name,
+              category,
+              title,
+              date,
+              content,
+              overall
+            },
+            area,
             city,
             province,
             latitude,
@@ -219,6 +231,118 @@ export class GraphqlService {
         }`,
       variables:{
         "cty": cty,
+      }
+    })
+  }
+  nearestHotels(lat, lng):Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+        query NearestHotels($lat: Float,$lng: Float, $amount: Int){
+          nearesthotel(lat:$lat, lng:$lng, amount:$amount){
+            name,
+            address,
+            rating,
+            star,
+            locationrate,
+            cleanrate,
+            roomrate,
+            servicerate,
+            rooms{
+              name,
+              maxguest,
+              roomsize,
+              beddetail,
+              breakfast,
+              wifi,
+              freecancel,
+              payathotel,
+              price,
+            }, 
+            facilities{
+              ac,
+              parking,
+              receptionist,
+              pool,
+              lift,
+              restaurant,
+              wifi,
+              spa,
+            },
+            reviews{
+              name,
+              category,
+              title,
+              date,
+              content,
+              overall,
+            },
+            area,
+            city,
+            province,
+            latitude,
+            longitude,
+            zoomlevel,
+          }
+        }`,
+      variables:{
+        "lat": lat,
+        "lng": lng,
+        "amount": 8
+      }
+    })
+  }
+  filterHotels(filters: HotelFilter):Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+        query FilterHotel($str: [Int]){
+          filterhotel(stars:$str){
+            name,
+            address,
+            rating,
+            star,
+            locationrate,
+            cleanrate,
+            roomrate,
+            servicerate,
+            rooms{
+              name,
+              maxguest,
+              roomsize,
+              beddetail,
+              breakfast,
+              wifi,
+              freecancel,
+              payathotel,
+              price,
+            }, 
+            facilities{
+              ac,
+              parking,
+              receptionist,
+              pool,
+              lift,
+              restaurant,
+              wifi,
+              spa,
+            },
+            reviews{
+              name,
+              category,
+              title,
+              date,
+              content,
+              overall
+            },
+            area,
+            city,
+            province,
+            latitude,
+            longitude,
+            zoomlevel,
+          }
+        }`,
+      variables:{
+        "str": filters.stars,
       }
     })
   }
@@ -268,6 +392,28 @@ export class GraphqlService {
       variables:{
         "src": src,
         "dst": dst,
+      }
+    })
+  }
+
+  searchCars(cty: string):Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+      query SearchCar($cty: String){
+        searchcar(city:$cty){
+          brand,
+          model,
+          luggage,
+          passenger,
+          vendors{
+            name,
+            price,
+            city,
+          }
+        }
+      }`,
+      variables:{
+        "cty": cty
       }
     })
   }

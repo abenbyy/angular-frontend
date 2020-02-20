@@ -41,6 +41,23 @@ mat-card{
     width: 80vw;
     
 }
+mwl-calendar-month-view{
+    height:500px;
+    width: calc(90vw+0.2em);
+    margin: 10px;
+}
+
+.calendar-button-container{
+    @include dfjcsbaic();
+    margin: 20px;
+    
+}
+.calendar-current-month{
+    @include dfjccaic()
+}
+#calendar-container{
+    margin: 20px;
+}
 
 #filter-container{
     @include dfjcsbaic();

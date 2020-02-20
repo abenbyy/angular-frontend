@@ -65,6 +65,13 @@ $mfont: OpenSansFont;
     align-items: center;
 }
 
+@mixin dfjcfsaicfdc {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
 @mixin boxedform{
     box-shadow: 8px 8px 5px grey;
     border-radius: 8px;

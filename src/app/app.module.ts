@@ -59,6 +59,9 @@ import { GraphQLModule } from './graphql.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
 import {
   GoogleApiModule, 
   GoogleApiService, 
@@ -76,6 +79,10 @@ import { HomepageSliderComponent } from './components/homepage-slider/homepage-s
 import { ChangeSearchWidgetComponent } from './components/change-search-widget/change-search-widget.component';
 import { SearchHotelComponent } from './components/search-hotel/search-hotel.component';
 import { HotelDetailComponent } from './components/hotel-detail/hotel-detail.component';
+import { NearestHotelComponent } from './components/nearest-hotel/nearest-hotel.component';
+import { HotelImageSliderComponent } from './components/hotel-image-slider/hotel-image-slider.component';
+import { SearchCarComponent } from './components/search-car/search-car.component';
+import { CarDetailComponent } from './components/car-detail/car-detail.component';
 
 
 let GOOGLEAUTH_ID:string = "385839845308-kc4slf9ji1rufjj36bf246l4rhjfm9n7.apps.googleusercontent.com";
@@ -150,12 +157,19 @@ ScrollingModule,
     SearchTrainComponent,
     HomepageSliderComponent,
     ChangeSearchWidgetComponent,
-    HotelDetailComponent
+    HotelDetailComponent,
+    NearestHotelComponent,
+    HotelImageSliderComponent,
+    SearchCarComponent,
+    CarDetailComponent,
+    
+    
     
   ],
   entryComponents:[
     LoginModalComponent,
     ChangeSearchWidgetComponent,
+    HotelImageSliderComponent
   ],
   imports: [
     BrowserModule,
@@ -166,6 +180,11 @@ ScrollingModule,
       provide: NG_GAPI_CONFIG,
       useValue: gapiClientConfig
     }),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+
     modules,
     ReactiveFormsModule,
     FormsModule,

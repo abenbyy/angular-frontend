@@ -5,5 +5,7 @@ export class HotelRoom {
     beddetail: string
     breakfast: boolean
     wifi: boolean
+    freecancel: boolean
+    payathotel: boolean
     price: number
 }

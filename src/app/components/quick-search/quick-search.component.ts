@@ -122,6 +122,8 @@ export class QuickSearchComponent implements OnInit {
   trips : Trip[]
 
   hotel$: Subscription
+
+  car$: Subscription
   
   search():void{
     
@@ -146,6 +148,7 @@ export class QuickSearchComponent implements OnInit {
           })
 
         break;
+
       case 2:
         this.trip$ = this.graphqlService.searchTrips(this.selectedFrom,this.selectedTo)
         .subscribe(async query =>{
@@ -153,6 +156,14 @@ export class QuickSearchComponent implements OnInit {
           await this.insertTrip()
         })
         break;
+
+      case 3:
+        this.car$ = this.graphqlService.searchCars(this.selectedCity)
+        .subscribe(async query=>{
+          this.searchService.carResult = query.data.searchcar
+          this.searchService.selectedCarCity = this.selectedCity
+          await this.router.navigate(["./searchcar"])
+        })
     }
       
 

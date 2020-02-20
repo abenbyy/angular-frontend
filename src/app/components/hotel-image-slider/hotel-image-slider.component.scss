@@ -1,0 +1,9 @@
+@import '../../app.component.scss';
+
+#main-slider-container{
+    @include dfjccaic()
+}
+img{
+    width: 60vw;
+    height: 70vh;
+}

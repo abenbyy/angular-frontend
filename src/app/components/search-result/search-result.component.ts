@@ -4,8 +4,7 @@ import { FlightFilter } from 'src/app/models/flightfilter';
 import { SearchService } from 'src/app/services/search.service';
 import { Subscription, interval } from 'rxjs';
 import { GraphqlService } from 'src/app/services/graphql.service';
-import { async } from '@angular/core/testing';
-import { Airport } from 'src/app/models/airport';
+import { CalendarView } from 'angular-calendar';
 import { MatDialog } from '@angular/material/dialog';
 import { ChangeSearchWidgetComponent } from '../change-search-widget/change-search-widget.component';
 //import { DOCUMENT } from '@angular/common';
@@ -22,6 +21,9 @@ export class SearchResultComponent implements OnInit {
   selectedFrom : string
   selectedTo : string
   
+  view: CalendarView
+  viewDate: Date
+  CalendarView = CalendarView
   flights : Flight[]
   displayedFlights : Flight[]
   filter: FlightFilter;
@@ -43,6 +45,8 @@ export class SearchResultComponent implements OnInit {
     private graphqlService: GraphqlService,
     public dialog : MatDialog,
   ) { 
+    this.viewDate = new Date()
+    this.view = CalendarView.Month
     this.flights = new Array()
     this.departureHours = new Array()
     this.departureMinutes = new Array()

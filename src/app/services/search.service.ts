@@ -5,6 +5,7 @@ import { Hotel } from '../models/hotel';
 import { GraphqlService } from './graphql.service';
 import { Subscription } from 'rxjs';
 import { Airport } from '../models/airport';
+import { Car } from '../models/car';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +16,14 @@ export class SearchService {
   airports: Airport[]
   flightsResult: Flight[]
   hotelResult: Hotel[]
+  carResult: Car[]
   tripsResult: Trip[]
   selectedFlightFrom : string
   selectedFlightTo : string
   selectedHotelCity: string
+
+  selectedCarCity: string
+  selectedCar: Car
   selectedHotel: Hotel
 
   constructor(

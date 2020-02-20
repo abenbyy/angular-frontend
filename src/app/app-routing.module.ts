@@ -7,6 +7,8 @@ import { SearchTrainComponent } from './components/search-train/search-train.com
 import { HomepageSliderComponent } from './components/homepage-slider/homepage-slider.component';
 import { SearchHotelComponent } from './components/search-hotel/search-hotel.component';
 import { HotelDetailComponent } from './components/hotel-detail/hotel-detail.component';
+import { SearchCarComponent } from './components/search-car/search-car.component';
+import { CarDetailComponent } from './components/car-detail/car-detail.component';
 
 
 const routes: Routes = [
@@ -45,7 +47,15 @@ const routes: Routes = [
   {
     path:'detailpage',
     component: HotelDetailComponent,
-  }
+  },
+  {
+    path:'searchcar',
+    component: SearchCarComponent,
+  },
+  {
+    path:'cardetailpage',
+    component: CarDetailComponent,
+  },
 
 
 ];

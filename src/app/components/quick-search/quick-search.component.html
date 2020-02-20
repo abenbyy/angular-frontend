@@ -101,8 +101,28 @@
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </div>
+
+        <div *ngIf = "idx==3">
+            <mat-form-field>
+                <mat-label>City</mat-label>
+                <mat-select [(ngModel)]="selectedCity" name="city">
+                    <mat-option *ngFor="let city of cities" [value]="city.value">{{city.display}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
         <div id="card-button">
             <button (click)="search()" matButton >SEARCH {{type}}</button>
         </div>
     </div>
+</div>
+
+<div *ngIf="router.url === '/'">
+    <app-nearest-hotel></app-nearest-hotel>
 </div>

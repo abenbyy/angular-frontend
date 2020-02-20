@@ -1,0 +1,116 @@
+<mat-divider></mat-divider>
+<div id="sticky">
+    <br>
+    <div id="current-search-detail">
+        <div>
+            <div>Select City </div>
+            <div>
+                <mat-icon>place</mat-icon>
+                    {{selectedCity}} 
+            </div>
+        </div>
+        <div>
+            <button matTooltip="Click to change search" class="yellow-button" matButton (click)="openModal()">CHANGE SEARCH</button>
+        </div>
+    </div>
+    <br>
+</div>
+<mat-divider></mat-divider>
+<div id="sort-widget">
+    <div>
+        Sort by
+        <mat-icon>sort</mat-icon>
+        <ul>
+            <li><a (click)="sortByLowestPrice()">Reccomendation</a></li>
+            <li><a (click)="sortByLowestPrice()">Lowest Price</a></li>
+            <li><a (click)="sortByEarliestDeparture()">Earliest Departure</a></li>
+            <li><a (click)="sortByLatestDeparture()">Latest Departure</a></li>
+            <li><a (click)="sortByEarliestArrival()">Earliest Arrival</a></li>
+            <li><a (click)="sortByLatestArrival()">Latest Arrival</a></li>
+            <li><a (click)="sortByShortestDuration()">Shortest Duration</a></li>
+        </ul>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<div id="main-container">
+    <div id="main-left">
+        <div id="filter-container">
+            <div>FILTERS</div>
+            <button class="blue-text" (click)="resetFilter()">RESET</button>
+        </div>
+        
+        <mat-accordion multi="true">
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Rent Price
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div>Total: IDR 0 - IDR 2.000.000</div>
+                <mat-slider #time thumbLabel [displayWith]="formatLabel" (change)="filterDuration($event)" [value]="time" tickInterval="100000" min="1" max="2000000">
+
+                </mat-slider>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Passenger Capacity
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expanel-container">
+                    <mat-checkbox [(ngModel)]="checkBool[0]" class="chkbox">&lt; 5 Passenger</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[1]" class="chkbox">5 - 6 Passenger</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[2]" class="chkbox">&gt; 6 Passeger </mat-checkbox>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Car Brand
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expanel-container">
+                    <mat-checkbox *ngFor="let brand of displayedBrands; let i = index" [(ngModel)]="checkBool[i+3]" class="chkbox">{{brand}}</mat-checkbox>
+                    <div *ngIf="displayedBrands.length !== brands.length" (click)="expandBrand()">Show All +2</div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Model
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expanel-container">
+                    
+                    <mat-checkbox *ngFor="let model of displayedModels; let i = index" [(ngModel)]="checkBool[i+5]" class="chkbox" >{{model}}</mat-checkbox>
+                    <div *ngIf="displayedModels.length !== models.length" (click)="expandModel()">Show All +{{models.length-5}}</div>
+                    
+                </div>
+            </mat-expansion-panel>
+            
+            
+        </mat-accordion>
+    
+
+    </div>
+    <div id="main-right">
+        <mat-card class="card-car" *ngFor="let car of displayedCars">
+            <div>
+                <img src="../../../assets/images/ayla.png" alt="">
+            </div>
+            <div class="car-detail-cont">
+                <div (click)="goToDetail(car)">
+                    <strong>{{car.brand}} {{car.model}}</strong>
+                    <br>
+                    <mat-icon>accessibility</mat-icon>{{car.passenger}} <mat-icon>work</mat-icon>{{car.luggage}}
+                </div>
+                <div>
+                    <span class="blue-text bigger-text">IDR {{car.vendors[0].price}}</span>/day
+                    <br>
+                    <button matButton class="yellow-button">SELECT</button>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

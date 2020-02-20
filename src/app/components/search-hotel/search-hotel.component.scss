@@ -116,6 +116,7 @@ mat-tab-group{
 }
 
 #sort-widget{
+    z-index: 1;
     margin: 20px 0;
     display: flex;
     justify-content: flex-end;
@@ -142,7 +143,9 @@ mat-tab-group{
     }
 }
 
-#mapid{
-    width: calc(90vw+0.2em);
-    height: 100%;
+#leafletmap{
+    width: calc(100%+0.2em);
+    height: 300px;
+    overflow: hidden;
 }
+

@@ -13,9 +13,33 @@
             </div>
         </div>
         <div>
-            <button class="yellow-button" matButton (click)="openModal()">CHANGE SEARCH</button>
+            <button matTooltip="Click to change search" class="yellow-button" matButton (click)="openModal()">CHANGE SEARCH</button>
         </div>
     </div>
+</div>
+<mat-divider></mat-divider>
+<div class="calendar-current-month">
+    <h1>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h1>
+</div>
+<div class="calendar-button-container">
+    <div
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate"
+    ><h3>Prev Month</h3> <mat-icon>keyboard_arrow_left</mat-icon></div>
+    <div
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+    ><h3>Next Month</h3> <mat-icon>keyboard_arrow_right</mat-icon></div>
+</div>
+<div [ngSwitch]="view" id="calendar-container">
+    <mwl-calendar-month-view
+    *ngSwitchCase="CalendarView.Month"
+    [viewDate] = "viewDate">
+
+    </mwl-calendar-month-view
+    >
 </div>
 <mat-divider></mat-divider>
 <div id="sort-widget">

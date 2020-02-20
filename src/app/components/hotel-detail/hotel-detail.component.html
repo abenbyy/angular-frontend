@@ -1,7 +1,24 @@
 <div clas="main-container">
+    <mat-card class="marginned main-image">
+        <div class="first-image">
+            <img src="../../../assets/images/restaurant.jpg" alt="">
+        </div>
+        <div class="smaller-cont">
+            <div class="smaller-image"><img src="../../../assets/images/pool.jpg" alt=""></div>
+            <div class="even-smaller-cont">
+                <img src="../../../assets/images/meeting.jpg" alt="">
+                <img (click)="showSlider()" src="../../../assets/images/moar.png" alt="">
+            </div>
+        </div>
+    </mat-card>
     <mat-card class="marginned">
         <br>
+        <div>
+            Indonesia > {{selectedCity}} > {{selectedHotel.province}} > {{selectedHotel.area}}
+        </div>
+        <br>
         <div id="first-main-card">
+            
             <div id="hotel-name">
                 {{selectedHotel.name}}
             </div>
@@ -132,6 +149,16 @@
     </mat-card>
     <br>
     <br>
+    <mat-card class="marginned">
+        <div class="avail-box">
+            <mat-checkbox>Free Cancellation</mat-checkbox>
+            <mat-checkbox>Pay at hotel</mat-checkbox>
+            <mat-checkbox>Free Breakfast</mat-checkbox>
+            <mat-checkbox>Free WiFi</mat-checkbox>
+            <button matButton class="yellow-button">Check Avaliability</button>
+        </div>
+        <div></div>
+    </mat-card>
     <mat-card class="marginned" *ngFor="let room of selectedHotel.rooms">
         <br>
         <div class="main-card-content">
@@ -192,7 +219,74 @@
         <br>
     </mat-card>
 
+    <br><br><br>
+    <mat-card class="marginned dfjccaic">
+        <div class="review-left marginned">
+            <div class="dfjcsaaic">
+                {{selectedHotel.rating}}
+                <br>
+                Based on {{selectedHotel.reviews.length}} reviews
+            </div>
+            <br><br>
+            <div class="dfjcsaaic">
+                <div>Location</div>
+                <div>{{selectedHotel.locationrate}}</div>
+            </div>
+            <div class="dfjcsaaic">
+                <div>Cleanliness</div>
+                <div>{{selectedHotel.cleanrate}}</div>
+            </div>
+            <div class="dfjcsaaic">
+                <div>Room</div>
+                <div>{{selectedHotel.roomrate}}</div>
+            </div>
+            <div class="dfjcsaaic">
+                <div>Service</div>
+                <div>{{selectedHotel.servicerate}}</div>
+            </div>
+        </div>
+        <div class="review-right">
+            <mat-card *ngFor="let review of displayedReviews">
+                <br>
+                <mat-card-header>
+                    <mat-card-title>
+                        {{review.name}} <span>{{review.overall}}</span>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        {{review.date}} - {{review.category}}
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="marginleft"><strong>{{review.title}}</strong></div>
+                    <p class="marginleft">{{review.content}}</p>
+                </mat-card-content>
+                <br>
+            </mat-card>
+            
+            <mat-card>
+                <br>
+                <span>Showing {{currRevIdx*revSize+1}} - {{currRevIdx*revSize+revSize}} out of {{selectedHotel.reviews.length}}</span>
+                <mat-icon (click)="paginateLeft()">keyboard_arrow_left</mat-icon>
+                <mat-icon (click)="paginateRight()">keyboard_arrow_right</mat-icon>
+                <br>
+                <br>
+            </mat-card>
+
+        </div>
+    </mat-card>
+
     <mat-card class="marginned">
         <div id="mapid"></div>
+    </mat-card>
+    <br>
+    <mat-card class="marginned sharelinks">
+        <br>
+        <div>
+            <a href="" (click)="shareLink()">Copy Link</a>
+            <br>
+            <a href="mailto:?subject=I wanted you to see this hotel">Share with Email</a>
+            <br>
+            <a href="http://www.facebook.com/sharer.php">Share with Facebook</a>
+        </div>
     </mat-card>
 </div>

@@ -1,5 +1,6 @@
 import { HotelRoom } from './hotelroom'
 import { HotelFacility } from './hotelfacility'
+import { HotelReview } from './hotelreview'
 
 export class Hotel {
     name: string
@@ -12,6 +13,8 @@ export class Hotel {
     servicerate: number
     rooms: HotelRoom[]
     facilities: HotelFacility[]
+    reviews: HotelReview[]
+    area: string
     city: string
     province: string
     latitude: number

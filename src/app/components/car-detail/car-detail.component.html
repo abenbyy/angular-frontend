@@ -1,0 +1,28 @@
+<div id="main-container">
+    <div id="main-left">
+        <mat-card>
+            <mat-card-title>
+                {{selectedCar.brand}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{selectedCar.model}}
+            </mat-card-subtitle>
+            <img mat-card-image src="../../../assets/images/ayla.png" alt="">
+            <mat-card-content>
+                <mat-icon>accessibility</mat-icon> {{selectedCar.passenger}} passenger
+                <br>
+                <mat-icon>work</mat-icon> {{selectedCar.luggage}} baggage
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div id="main-right">
+        <mat-card class="vendor-card" *ngFor="let vendor of selectedCar.vendors">
+            <div><strong>{{vendor.name}}</strong></div>
+            <div>
+                <span class="bigger-text blue-text">IDR {{vendor.price}}</span>/day
+                <br>
+                <button matButton class="yellow-button">SELECT</button>
+            </div>
+        </mat-card>
+    </div>
+</div>

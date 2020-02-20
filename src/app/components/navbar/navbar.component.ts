@@ -40,8 +40,8 @@ export class NavbarComponent implements OnInit {
   showLoginModal(){
     this.logDialog.open(LoginModalComponent,{
       height: '75vh',
-      width: '30vw',
-      minWidth: '20vw',
+      width: '600px',
+      minWidth: '400px',
       minHeight: '35vh',
     })
   }
