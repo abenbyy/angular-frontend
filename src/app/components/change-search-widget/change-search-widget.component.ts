@@ -15,11 +15,23 @@ import { Router } from '@angular/router';
 })
 export class ChangeSearchWidgetComponent implements OnInit {
   @Input() type:string
+  
+  cities = [{
+    value: "Jakarta",
+    display: "Jakarta, Indonesia",
+  },
+  {
+    value: "Bandung",
+    display: "Bandung, Indonesia",
+  }]
+
   airports: Airport[]
   flights: Flight[]
+  hotel$: Subscription
   flight$: Subscription
   selectedFrom: string
   selectedTo: string
+  selectedCity: string
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private searchService: SearchService,
@@ -31,6 +43,7 @@ export class ChangeSearchWidgetComponent implements OnInit {
     
   ngOnInit() {
     this.airports = this.searchService.airports
+    
   }
 
   changeSearch():void{
@@ -39,6 +52,13 @@ export class ChangeSearchWidgetComponent implements OnInit {
       .subscribe(async query=>{
         this.flights = query.data.searchflight
         await this.insertFlight()
+      })
+    }
+    else if(this.data.type === "hotel"){
+      this.hotel$ = this.graphqlService.searchHotels(this.selectedCity)
+      .subscribe(async query=>{
+        this.searchService.hotelResult = query.data.searchhotel
+        this.dialog.closeAll()
       })
     }
   }

@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs';
 import { HotelFilter } from '../../models/hotelfilter';
 import * as L from 'leaflet';
 import { AttributeMarker } from '@angular/compiler/src/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ChangeSearchWidgetComponent } from '../change-search-widget/change-search-widget.component';
 //import icon from '../../../assets/icons/marker-icon.png';
 //import iconShadow from '../../../assets/icons/marker-icon.png';
 
@@ -21,6 +23,7 @@ export class SearchHotelComponent implements OnInit {
     private searchService : SearchService,
     private graphqlService: GraphqlService,
     private router : Router,
+    private dialog: MatDialog,
   ) { 
 
     this.checkBool = new Array(20).fill(false)
@@ -56,31 +59,7 @@ export class SearchHotelComponent implements OnInit {
   
     //L.Marker.prototype.options.icon = DefaultIcon;
     this.getStarPropertyCount()
-    
-
-    setInterval(function(){
-      if(!this.map){
-        this.map = L.map('leafletmap').setView([this.hotels[0].latitude, this.hotels[0].longitude], 14);
-      alert(this.map)
-      
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(this.map);
-      }
-      
-    }.bind(this), 300)
-    
-    
-      
-    //   var marks
-    //   this.hotels.forEach(function(val){
-    //     var marker = L.marker([val.latitude, val.longitude]).addTo(map);
-    //  //marker.addTo(map)
-    //     marks.push(marker)
-    //     //marker.bindPopup(val.name).openPopup();
-    //   }.bind(this))
-
-      //this.switchMap()
+  
       
      
   }
@@ -176,14 +155,28 @@ export class SearchHotelComponent implements OnInit {
   }
 
   switchMap(){
-    this.isMap = !this.isMap
-    
-    
+   this.router.navigate(["./hotelsearchmap"])
+   this.searchService.hotelResult = this.hotels
+  }
+
+  openModal(){
+    this.dialog.open(ChangeSearchWidgetComponent,{
+      data:{
+        type: 'hotel'
+      },
+      height: 'fit-content',
+      width: '100vw'
       
-      
-    //  for(let i = 0 ;i<this.hotels.length;i++){
-    //   var marker = L.marker([this.hotels[i].latitude, this.hotels[i].longitude]).addTo(map);
-    //   marker.bindPopup(this.hotels[i].name).openPopup();
-    //  }
+    })
+    this.dialog.afterAllClosed.subscribe(
+      ()=>{
+        this.reFetchData()
+        
+      }
+    )
+  }
+
+  reFetchData(){
+    this.hotels = this.searchService.hotelResult
   }
 }

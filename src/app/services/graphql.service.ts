@@ -418,4 +418,73 @@ export class GraphqlService {
     })
   }
 
+  searchEntertainments(typ: string):Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+      query SearchEntertainment($typ: String){
+        searchentertainment(type: $typ){
+          name,
+          type,
+          address,
+          needdate,
+          tickets{
+            name,
+            price
+          }
+          longitude,
+          latitude,
+          
+        }
+      }`,
+      variables:{
+        "typ": typ
+      }
+    })
+  }
+
+  getTrendingEntertainment(typ: string):Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+      query GetTrendingEntertainment($typ: String){
+        trendingentertainment(type: $typ){
+          name,
+          type,
+          address,
+          needdate,
+          tickets{
+            name,
+            price
+          }
+          longitude,
+          latitude,
+          
+        }
+      }`,
+      variables:{
+        "typ": typ
+      }
+    })
+  }
+
+  getBestEntertainment():Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+      query GetBestEntertainment{
+        bestentertainment{
+          name,
+          type,
+          address,
+          needdate,
+          tickets{
+            name,
+            price
+          }
+          longitude,
+          latitude,
+          
+        }
+      }`,
+    })
+  }
+
 }

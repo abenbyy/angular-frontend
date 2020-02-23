@@ -180,4 +180,8 @@ export class QuickSearchComponent implements OnInit {
     this.router.navigate(['./searchtrip'])
   }
 
+  goToEntertainment(){
+    this.router.navigate(["./entertainments"])
+  }
+
 }

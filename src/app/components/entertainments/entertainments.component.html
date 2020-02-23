@@ -1,0 +1,94 @@
+<mat-card>
+
+</mat-card>
+
+
+<div class="full-screen center-contents">
+    <div class="bigger-text">Best Offer For You</div>
+</div>
+<br>
+
+<div class="full-screen ent-cont">
+    <mat-icon (click)="slideLeft()" class="bigger-text">arrow_left</mat-icon>
+    <mat-card class="ent-card slides" *ngFor="let best of displayedBests">
+        <img *ngIf="best.type==='Activity'" mat-card-image src="../../../assets/images/activity.jpg" alt="">
+        <img *ngIf="best.type==='Attraction'" mat-card-image src="../../../assets/images/attraction.jpg" alt="">
+        <img *ngIf="best.type==='Event'" mat-card-image src="../../../assets/images/event.jpg" alt="">
+        <mat-card-content (click)="goToEntertainmentDetail(best)">
+            <strong>{{best.name}}</strong>
+            <br>
+            {{best.address}}
+        </mat-card-content>
+        <mat-card-actions class="price-text bigger-text">
+            <strong>IDR{{best.tickets[0].price}}</strong>
+        </mat-card-actions>
+    </mat-card>
+    <mat-icon (click)="slideRight()" class="bigger-text">arrow_right</mat-icon>
+</div>
+
+<br>
+<br>
+
+<div class="full-screen center-contents">
+    <div class="bigger-text">Trending Activities</div>
+</div>
+<br>
+
+
+<div class="full-screen ent-cont">
+    <mat-card class="ent-card" *ngFor="let activity of trendingActivities">
+        <img mat-card-image src="../../../assets/images/activity.jpg" alt="">
+        <mat-card-content (click)="goToEntertainmentDetail(activity)">
+            <strong>{{activity.name}}</strong>
+            <br>
+            {{activity.address}}
+        </mat-card-content>
+        <mat-card-actions class="price-text bigger-text">
+            <strong>IDR{{activity.tickets[0].price}}</strong>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<br>
+<br>
+<div class="full-screen center-contents">
+    <div class="bigger-text">Trending Attractions</div>
+</div>
+<br>
+
+
+<div class="full-screen ent-cont">
+    <mat-card class="ent-card" *ngFor="let attraction of trendingAttractions">
+        <img mat-card-image src="../../../assets/images/attraction.jpg" alt="">
+        <mat-card-content (click)="goToEntertainmentDetail(attraction)">
+            <strong>{{attraction.name}}</strong>
+            <br>
+            {{attraction.address}}
+        </mat-card-content>
+        <mat-card-actions class="price-text bigger-text">
+            <strong>IDR{{attraction.tickets[0].price}}</strong>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+
+<div class="full-screen center-contents">
+    <div class="bigger-text">Trending Events</div>
+</div>
+<br>
+
+
+<div class="full-screen ent-cont">
+    <mat-card class="ent-card" *ngFor="let event of trendingEvents">
+        <img mat-card-image src="../../../assets/images/event.jpg" alt="">
+        <mat-card-content (click)="goToEntertainmentDetail(event)">
+            <strong>{{event.name}}</strong>
+            <br>
+            {{event.address}}
+        </mat-card-content>
+        <mat-card-actions class="price-text bigger-text">
+            <strong>IDR{{event.tickets[0].price}}</strong>
+        </mat-card-actions>
+    </mat-card>
+</div>
+

@@ -83,6 +83,11 @@ import { NearestHotelComponent } from './components/nearest-hotel/nearest-hotel.
 import { HotelImageSliderComponent } from './components/hotel-image-slider/hotel-image-slider.component';
 import { SearchCarComponent } from './components/search-car/search-car.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { SearchHotelMapComponent } from './components/search-hotel-map/search-hotel-map.component';
+import { EntertainmentsComponent } from './components/entertainments/entertainments.component';
+import { SearchEntertainmentComponent } from './components/search-entertainment/search-entertainment.component';
+import { EntertainmentDetailComponent } from './components/entertainment-detail/entertainment-detail.component';
+import { OrderEntertainmentComponent } from './components/order-entertainment/order-entertainment.component';
 
 
 let GOOGLEAUTH_ID:string = "385839845308-kc4slf9ji1rufjj36bf246l4rhjfm9n7.apps.googleusercontent.com";
@@ -162,8 +167,11 @@ ScrollingModule,
     HotelImageSliderComponent,
     SearchCarComponent,
     CarDetailComponent,
-    
-    
+    SearchHotelMapComponent,
+    EntertainmentsComponent,
+    SearchEntertainmentComponent,
+    EntertainmentDetailComponent,
+    OrderEntertainmentComponent,
     
   ],
   entryComponents:[

@@ -6,6 +6,7 @@ import { GraphqlService } from './graphql.service';
 import { Subscription } from 'rxjs';
 import { Airport } from '../models/airport';
 import { Car } from '../models/car';
+import { Entertainment } from '../models/entertainment';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,7 @@ export class SearchService {
   selectedCarCity: string
   selectedCar: Car
   selectedHotel: Hotel
+  selectedEnt : Entertainment
 
   constructor(
     graphqlService : GraphqlService,
