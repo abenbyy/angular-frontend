@@ -1,0 +1,42 @@
+@import '../../app.component.scss';
+
+#main-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+#main-left{
+    width: 60vw;
+    min-width: 300px;
+}
+
+#main-right{
+    width: 30vw;
+    min-width: 150px;
+    mat-card{
+        padding: 10px;
+    }
+    
+}
+.price-text{
+    color: $ycolor;
+}
+
+.bigger-text{
+    font-size: 18px;
+}
+
+.paddinged{
+    padding: 10px;
+}
+
+.marginned{
+    margin: 10px;
+}
+.full-width{
+    width: 100%;
+}
+
+.dfjcsbaic{
+    @include dfjcsbaic();
+}

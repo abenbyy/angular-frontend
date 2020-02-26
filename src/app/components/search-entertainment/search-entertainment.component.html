@@ -1,1 +1,71 @@
-<p>search-entertainment works!</p>
+<a id="whatsapp-cont" href="https://web.whatsapp.com/send?phone=628551500878&text=Hi%2c%20tiket.com">
+    <button matButton class="whatsapp-button">Whatsapp</button>
+</a>
+
+<mat-card>
+
+</mat-card>
+
+<div id="main-cont">
+    <div id="main-left">
+        <mat-card>
+            <span>FILTERS</span>
+            <button class="blue-text" (click)="resetFilter()">RESET</button>
+        </mat-card>
+        <mat-accordion multi="true">
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Category
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expanel-cont">
+                    <mat-checkbox [(ngModel)]="checkBool[0]" class="chkbox">Activity</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[1]" class="chkbox">Attraction</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[2]" class="chkbox">Event</mat-checkbox>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-card class="filter-card">
+            <div>Price</div>
+            <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="100000" min="0" max="10000000">
+            </mat-slider>
+        </mat-card>
+        <mat-card class="filter-card">
+            <div>Start & End Date</div>
+            <mat-form-field>
+                <mat-label>Start</mat-label>
+                <input matInput [matDatepicker]="start">
+                <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+                <mat-datepicker #start></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field>
+
+                <mat-label>End</mat-label>
+                <input matInput [matDatepicker]="end">
+                <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+                <mat-datepicker #end></mat-datepicker>
+              </mat-form-field>
+        </mat-card>
+    </div>
+    <div id="main-right">
+        <mat-card class="ent-card" *ngFor="let ent of displayedEnts">
+            <div class="img-cont">
+                <img *ngIf="ent.type==='Activity'" mat-card-image src="../../../assets/images/activity.jpg" alt="">
+                <img *ngIf="ent.type==='Attraction'" mat-card-image src="../../../assets/images/attraction.jpg" alt="">
+                <img *ngIf="ent.type==='Event'" mat-card-image src="../../../assets/images/event.jpg" alt="">
+            </div>
+            <mat-card-content (click)="goToDetail(ent)">
+                <div>
+                    <strong>{{ent.name}}</strong>
+                </div>
+                <div>
+                    {{ent.address}}
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <span class='bigger-text price-text center-self'>IDR {{ent.tickets[0].price}}</span>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

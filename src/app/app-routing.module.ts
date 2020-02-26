@@ -14,6 +14,8 @@ import { EntertainmentsComponent } from './components/entertainments/entertainme
 import { SearchEntertainmentComponent } from './components/search-entertainment/search-entertainment.component';
 import { EntertainmentDetailComponent } from './components/entertainment-detail/entertainment-detail.component';
 import { OrderEntertainmentComponent } from './components/order-entertainment/order-entertainment.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { BlogDetailComponent } from './components/blog-detail/blog-detail.component';
 
 
 const routes: Routes = [
@@ -80,7 +82,16 @@ const routes: Routes = [
   {
     path:'orderentertainment',
     component: OrderEntertainmentComponent,
-  }
+  },
+  {
+    path:'blogs',
+    component: BlogComponent,
+  },
+  {
+    path:'blogs/:id',
+    component: BlogDetailComponent,
+  },
+
 
 
 ];

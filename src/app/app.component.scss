@@ -72,6 +72,12 @@ $mfont: OpenSansFont;
     flex-direction: column;
 }
 
+@mixin dfjccaifs{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
 @mixin boxedform{
     box-shadow: 8px 8px 5px grey;
     border-radius: 8px;

@@ -1,0 +1,11 @@
+<div id="main-cont">
+    <mat-card (click)="goToDetail(blog)" *ngFor="let blog of blogs" class="blog-card">
+        <div>
+            <img mat-card-image src="{{blog.image}}" alt="">
+        </div>
+        <br>
+        <mat-card-content class="bigger-text">
+            <strong>{{blog.title}}</strong>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -28,6 +28,8 @@ export class EntertainmentsComponent implements OnInit {
   secondIdx: any
   thirdIdx: any
 
+  selectedType
+
   constructor(
     private searchService: SearchService,
     private graphqlService: GraphqlService,
@@ -35,6 +37,7 @@ export class EntertainmentsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.selectedType = ""
 
     this.firstIdx = 0
     this.secondIdx = 1
@@ -128,6 +131,11 @@ export class EntertainmentsComponent implements OnInit {
   goToEntertainmentDetail(val: Entertainment){
     this.searchService.selectedEnt = val
     this.router.navigate(['./entertainmentdetail'])
+  }
+
+  searchEnt(){
+    this.searchService.selectedType = this.selectedType
+    this.router.navigate(['./searchentertainment'])
   }
   
 }

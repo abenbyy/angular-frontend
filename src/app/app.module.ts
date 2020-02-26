@@ -88,6 +88,9 @@ import { EntertainmentsComponent } from './components/entertainments/entertainme
 import { SearchEntertainmentComponent } from './components/search-entertainment/search-entertainment.component';
 import { EntertainmentDetailComponent } from './components/entertainment-detail/entertainment-detail.component';
 import { OrderEntertainmentComponent } from './components/order-entertainment/order-entertainment.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { BlogDetailComponent } from './components/blog-detail/blog-detail.component';
+import { HistoryComponent } from './components/history/history.component';
 
 
 let GOOGLEAUTH_ID:string = "385839845308-kc4slf9ji1rufjj36bf246l4rhjfm9n7.apps.googleusercontent.com";
@@ -172,12 +175,16 @@ ScrollingModule,
     SearchEntertainmentComponent,
     EntertainmentDetailComponent,
     OrderEntertainmentComponent,
+    BlogComponent,
+    BlogDetailComponent,
+    HistoryComponent
     
   ],
   entryComponents:[
     LoginModalComponent,
     ChangeSearchWidgetComponent,
-    HotelImageSliderComponent
+    HotelImageSliderComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,

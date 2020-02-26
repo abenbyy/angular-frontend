@@ -1,7 +1,7 @@
 <div *ngIf="router.url === '/'">
     <app-homepage-slider></app-homepage-slider>
 </div>
-<div id="main-quicksearch">
+<div id="main-quicksearch" (click)=highlight()>
     <div id="quicksearch-container">
         <div id="quick-first" *ngIf="!searchService.isSpecified">
             <div id="message-container">
@@ -35,12 +35,11 @@
                 </div>
             </div>
         </div>
-        <div>
-            <div>
-                <img src="" alt="">
-                <div>{{message}}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="margin-right: 10px;">
+                <span>{{message}}</span>
             </div>
-            <div>
+            <div (click)="openHistory()">
                 <a>Recently Searched ></a>
             </div>
         </div>

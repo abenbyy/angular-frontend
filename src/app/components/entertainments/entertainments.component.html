@@ -1,5 +1,14 @@
-<mat-card>
-
+<app-homepage-slider></app-homepage-slider>
+<mat-card class="full-screen search-card">
+    <mat-form-field>
+        <mat-label>From</mat-label>
+        <mat-select [(ngModel)]="selectedType" name="type">
+            <mat-option value="Activity">Activities</mat-option>
+            <mat-option value="Attraction">Attractions</mat-option>
+            <mat-option value="Event">Events</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button class="yellow-button" (click)="searchEnt()">Search Entertainments</button>
 </mat-card>
 
 

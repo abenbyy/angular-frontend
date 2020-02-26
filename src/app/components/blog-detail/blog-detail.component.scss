@@ -1,0 +1,52 @@
+@import '../../app.component.scss';
+
+#main-cont{
+    @include dfjccaifs();
+}
+
+.center-content{
+    @include dfjccaic();
+}
+
+#main-right{
+    margin: 10px;
+    width: 20vw;
+}
+
+#main-left{
+    margin: 10px;
+    width: 60vw;
+}
+
+.share-cont{
+    @include dfjcsaaic();
+    button{
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 15px;
+        border: none;
+        color: white;
+        width: 10vw;
+        border: none;
+        text-decoration: none;
+        box-shadow: none;
+        min-width: fit-content;
+    }
+}
+
+#main-blog-image{
+    @include dfjccaic();
+
+    img{
+        width: 60vw;
+        height: 30vw;
+        min-width: 300px;
+        min-height: 200px;
+        max-width: 900px;
+        max-height: 500px;
+    }
+}
+
+#main-blog-content{
+    font-size: 16px;
+}

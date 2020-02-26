@@ -8,7 +8,9 @@ const uri = 'http://localhost:2000/api';
 export function createApollo(httpLink: HttpLink){
     return{
         link: httpLink.create({uri}),
-        cache: new InMemoryCache(),
+        cache: new InMemoryCache({
+            dataIdFromObject: o => o.id
+        }),
     };
 }
 

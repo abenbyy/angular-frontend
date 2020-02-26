@@ -1,0 +1,34 @@
+<br><br>
+<div id="main-cont">
+    <div id="main-left">
+        <mat-card>
+            <div id="main-blog-image">
+                <img mat-card-image src="{{selectedBlog.image}}" alt="">
+            </div>
+            <mat-card-title>
+                {{selectedBlog.title}}
+            </mat-card-title>
+            <mat-card-actions class="share-cont">
+                <button style="background-color: #3B5998;" (click)="share('Facebook')" class="share-button">Share</button>
+                <button style="background-color: #00B900;" (click)="share('Line')"  class="share-button">Line</button>
+                <button style="background-color: #1EBEA5;" (click)="share('Whatsapp')"  class="share-button">Whatsapp</button>
+            </mat-card-actions>
+            <mat-card-content>
+                <div id="main-blog-content">
+                    {{selectedBlog.content}}
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div id="main-right">
+        <div class="center-content" style="margin-bottom: 10px;"><strong>Trending Now</strong></div>
+        <mat-card style="margin-bottom: 10px;" *ngFor="let popular of popularBlogs">
+            <div class="popular-blogs-image">
+                <img mat-card-image src="{{popular.image}}" alt="">
+            </div>
+            <mat-card-subtitle>
+                <strong>{{popular.title}}</strong>
+            </mat-card-subtitle>
+        </mat-card>
+    </div>
+</div>

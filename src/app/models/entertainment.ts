@@ -4,7 +4,7 @@ export class Entertainment {
     name : string
     type : string
     address : string
-    needate: boolean
+    needdate: boolean
     tickets : EntertainmentTicket[]
     latitude : number
     longitude : number

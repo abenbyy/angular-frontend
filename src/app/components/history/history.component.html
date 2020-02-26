@@ -1,0 +1,37 @@
+<mat-form-field>
+    <button matButton (click)="deleteHistory()">DELETE HISTORY</button>
+</mat-form-field>
+<mat-card *ngFor="let hist of searchService.searchHistory" style="margin-bottom: 10px; padding: 10px;">
+    <mat-card-title>
+        Type: {{hist.type}}
+    </mat-card-title>
+    <mat-card-content>
+        <div *ngIf="hist.type === 'Flight'">
+            <div>
+                From: {{hist.fieldOne}}
+            </div>
+            <div>
+                To: {{hist.fieldTwo}}
+            </div>
+        </div>
+        <div *ngIf="hist.type === 'Hotel'">
+            <div>
+                City: {{hist.fieldOne}}
+            </div>
+        </div>
+        <div *ngIf="hist.type === 'Train'">
+            <div>
+                From: {{hist.fieldOne}}
+            </div>
+            <div>
+                To: {{hist.fieldTwo}}
+            </div>
+        </div>
+        <div *ngIf="hist.type === 'Car'">
+            <div>
+                City: {{hist.fieldOne}}
+            </div>
+            
+        </div>
+    </mat-card-content>
+</mat-card>

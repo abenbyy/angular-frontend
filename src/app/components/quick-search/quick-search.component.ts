@@ -9,6 +9,9 @@ import { Flight } from 'src/app/models/flight';
 import { Trip } from 'src/app/models/trip';
 import { Hotel } from 'src/app/models/hotel';
 import { async } from '@angular/core/testing';
+import { History } from 'src/app/models/history';
+import { MatDialog } from '@angular/material/dialog';
+import { HistoryComponent } from '../history/history.component';
 
 
 @Component({
@@ -46,6 +49,7 @@ export class QuickSearchComponent implements OnInit {
     private searchService : SearchService,
     private graphqlService : GraphqlService,
     private router : Router,
+    private dialog: MatDialog,
   ) { }
   
   changeSelected(idx){
@@ -129,6 +133,11 @@ export class QuickSearchComponent implements OnInit {
     
     switch(this.idx){
       case 0:
+        var hist = new History()
+        hist.type = "Flight"
+        hist.fieldOne = this.selectedFrom
+        hist.fieldTwo = this.selectedTo
+        this.searchService.searchHistory.push(hist)
         this.flight$ = this.graphqlService.searchFlights(this.selectedFrom,this.selectedTo)
         .subscribe(async query =>{
           this.flights = query.data.searchflight
@@ -140,6 +149,11 @@ export class QuickSearchComponent implements OnInit {
         break;
 
       case 1:
+        var hist = new History()
+        hist.type = "Hotel"
+        hist.fieldOne = this.selectedCity
+        hist.fieldTwo = ""
+        this.searchService.searchHistory.push(hist)
           this.hotel$ = this.graphqlService.searchHotels(this.selectedCity)
           .subscribe(async query=>{
             this.searchService.hotelResult = query.data.searchhotel
@@ -150,6 +164,11 @@ export class QuickSearchComponent implements OnInit {
         break;
 
       case 2:
+        var hist = new History()
+        hist.type = "Train"
+        hist.fieldOne = this.selectedFrom
+        hist.fieldTwo = this.selectedTo
+        this.searchService.searchHistory.push(hist)
         this.trip$ = this.graphqlService.searchTrips(this.selectedFrom,this.selectedTo)
         .subscribe(async query =>{
           this.trips = query.data.searchtrip
@@ -158,6 +177,11 @@ export class QuickSearchComponent implements OnInit {
         break;
 
       case 3:
+        var hist = new History()
+        hist.type = "Car"
+        hist.fieldOne = this.selectedCity
+        hist.fieldTwo = ""
+        this.searchService.searchHistory.push(hist)
         this.car$ = this.graphqlService.searchCars(this.selectedCity)
         .subscribe(async query=>{
           this.searchService.carResult = query.data.searchcar
@@ -184,4 +208,16 @@ export class QuickSearchComponent implements OnInit {
     this.router.navigate(["./entertainments"])
   }
 
+  openHistory(){
+    this.dialog.open(HistoryComponent,{
+      width: '30vw',
+      height:'95vh'
+    })
+  }
+
+  highlight(){
+    var el = document.getElementById("main-quicksearch")
+    el.style.backgroundColor= "rgba(0,0,0,0.5)"
+    
+  }
 }

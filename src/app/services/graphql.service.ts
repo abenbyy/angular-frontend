@@ -487,4 +487,50 @@ export class GraphqlService {
     })
   }
 
+  getAllBlogs():Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+      query GetAllBlogs{
+        allblogs{
+          id,
+          title,
+          content,
+          image
+        }
+      }`,
+      fetchPolicy:"no-cache",
+    })
+  }
+
+  getBlog(id: number):Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+      query GetBlog($id: Int){
+        blog(id: $id){
+          id,
+          title,
+          content,
+          image
+        }
+      }`,
+      variables:{
+        "id": id
+      }
+    })
+  }
+
+  getPopularBlogs():Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+      query GetPopularBlogs{
+        popularblogs{
+          id,
+          title,
+          content,
+          image
+        }
+      }`,
+    })
+  }
+
 }

@@ -1,1 +1,141 @@
-<p>order-entertainment works!</p>
+
+<div class="full-scr marginned">
+    <div id="timer">Timer</div>
+</div>
+<div id="main-container">
+    <div id="main-left">
+        <div class="bigger-text">Order Details</div>
+        <br>
+        <mat-accordion>
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <strong class="bigger-text">{{selectedEnt.name}}</strong>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div *ngFor="let ticket of selectedTickets; let i = index" style="pad: 10px;">
+                    <div style="margin: 10px 0;">{{ticket.name}} x {{selectedQtys[i]}}</div>
+                    <div class="bigger-text price-text">IDR {{ticket.price}}</div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <br>
+        <br>
+        <div class="bigger-text">Orderer Details</div>
+        <br>
+        <mat-card class="paddinged">
+            <div class="dfjcsbaic">
+                <div>
+                    <mat-form-field>
+                        <mat-label>Title</mat-label>
+                        <mat-select>
+                            <mat-option value="Mr">Mr</mat-option>
+                            <mat-option value="Mrs">Mrs</mat-option>
+                            <mat-option value="Ms">Ms</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="marginned">
+                        <mat-label>First Name</mat-label>
+                        <input matInput id="orderer-firstname">
+                    </mat-form-field>
+                    <mat-form-field class="marginned">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput id="orderer-lastname">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="dfjcsbaic">
+                <div>
+                    <mat-form-field>
+                        <mat-label>Country Code</mat-label>
+                        <mat-select>
+                            <mat-option value="+62">(+62)</mat-option>
+                            <mat-option value="+65">(+65)</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput type="text" id="orderer-number" placeholder="ex. 8132717263">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <mat-form-field class="full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput id="orderer-email">
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+        <br><br>
+        <div class="bigger-text">Picker Details</div>
+        <br>
+        <mat-card class="paddinged">
+            <div class="dfjcsbaic">
+                <div>
+                    <mat-form-field>
+                        <mat-label>Title</mat-label>
+                        <mat-select>
+                            <mat-option value="Mr">Mr</mat-option>
+                            <mat-option value="Mrs">Mrs</mat-option>
+                            <mat-option value="Ms">Ms</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="marginned">
+                        <mat-label>First Name</mat-label>
+                        <input matInput id="picker-firstname">
+                    </mat-form-field>
+                    <mat-form-field class="marginned">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput id="picker-lastname">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="dfjcsbaic">
+                <div>
+                    <mat-form-field>
+                        <mat-label>Country Code</mat-label>
+                        <mat-select>
+                            <mat-option value="+62">(+62)</mat-option>
+                            <mat-option value="+65">(+65)</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput type="text" id="picker-number" placeholder="ex. 8132717263">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <mat-form-field class="full-width marginned">
+                    <mat-label>Email</mat-label>
+                    <input matInput id="picker-email">
+                </mat-form-field>
+            </div>
+        </mat-card>
+    </div>
+
+    
+    <div id="main-right">
+        <mat-card *ngFor="let ticket of selectedTickets; let i = index">
+            <mat-card-content>
+                {{ticket.name}} x {{selectedQtys[i]}}
+                <span class="price-text bigger-text">IDR {{ticket.price}}</span>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <br>
+        <mat-card>
+            Total Payment:<span class="price-text bigger-text"> IDR {{totalPrice}}</span>
+        </mat-card>
+    </div>
+</div>

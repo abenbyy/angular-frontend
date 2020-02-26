@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Dropdown } from 'src/app/models/dropdown';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { AccountService } from 'src/app/services/account.service';
+import { HttpClient } from '@angular/common/http';
+
 
 
 
@@ -37,7 +39,8 @@ export class ProfileComponent implements OnInit {
     Validators.required,
   ])
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private http: HttpClient,
   ) { 
     
   }
@@ -45,5 +48,19 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
    
   }
+
+  updateProfile(){
+    
+  }
+
+  validatePhoneNumber(val: string){
+    this.http.get("http://apilayer.net/api/validate?access_key=0317a1b34af44bd06b69e5e26b563b45&number="+val+"&country_code=&format=1")
+    .subscribe((response: Response)=>{
+      var res = response.json()
+      return res["valid"]
+    })
+  }
+
+  
 
 }

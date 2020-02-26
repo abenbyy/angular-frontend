@@ -94,13 +94,21 @@ export class HotelDetailComponent implements OnInit {
     // });
   
   //L.Marker.prototype.options.icon = DefaultIcon;
+  
+  var iconDefault = L.divIcon({
+    className: 'custom-div-icon',
+    html: "<img src='../../../assets/icons/marker-icon.png'></img>",
+    iconSize: [100, 42],
+    iconAnchor: [15, 42]
+  })
+
     var map = L.map('mapid').setView([this.selectedHotel.latitude, this.selectedHotel.longitude], this.selectedHotel.zoomlevel);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
   
     //L.marker([this.selectedHotel.latitude, this.selectedHotel.longitude]).addTo(this.map)
-     var marker = L.marker([this.selectedHotel.latitude, this.selectedHotel.longitude]).addTo(map);
+     var marker = L.marker([this.selectedHotel.latitude, this.selectedHotel.longitude],{icon: iconDefault}).addTo(map);
      //marker.addTo(map)
      marker.bindPopup(this.selectedHotel.name).openPopup();
 

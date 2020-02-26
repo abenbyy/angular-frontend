@@ -1,0 +1,86 @@
+@import '../../app.component.scss';
+
+#whatsapp-cont{
+    position: sticky;
+    left: 90vw;
+    top: 90vh;
+}
+
+.whatsapp-button{
+    padding: 15px;
+    background-color: green;
+    color: white;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.price-text{
+    color: $ycolor;
+}
+
+.bigger-text{
+    font-size: 18px;
+}
+
+.center-self{
+    align-self: center;
+}
+
+.ent-card{
+    width: 100%;
+    max-width: 600px;
+    margin: 20px 0;
+    padding: 10px;
+    .img-cont{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img{
+            align-self: center;
+            margin: 0;
+            width:calc(100%/3);
+            height: 150px;
+            min-width: 100px;
+            min-height: 50px;
+            max-width:  400px;
+            max-height: 200px;
+        }
+    }
+}
+
+#main-cont{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+#main-right{
+    width: 50vw;
+}
+#main-left{
+    width: 20vw;
+}
+.expanel-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    mat-checkbox{
+        padding: 10px;
+    }
+    
+}
+
+.filter-card{
+    padding: 10px;
+    mat-slider{
+        width: 100%;
+    }
+    mat-form-field{
+        width: 100%;
+    }
+}
+
+
