@@ -12,4 +12,7 @@ export class BlogEditorComponent implements OnInit {
   ngOnInit() {
   }
 
+  action(val){
+    document.execCommand(val)
+  }
 }

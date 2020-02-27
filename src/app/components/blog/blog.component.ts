@@ -46,7 +46,7 @@ export class BlogComponent implements OnInit {
   }
 
   goToDetail(val: Blog){
-    this.searchService.selectedBlog = val
+    //this.searchService.selectedBlog = val
     this.router.navigate(['./blogs',val.id])
   }
 

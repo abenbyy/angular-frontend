@@ -16,6 +16,7 @@ import { EntertainmentDetailComponent } from './components/entertainment-detail/
 import { OrderEntertainmentComponent } from './components/order-entertainment/order-entertainment.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogDetailComponent } from './components/blog-detail/blog-detail.component';
+import { BlogEditorComponent } from './components/blog-editor/blog-editor.component';
 
 
 const routes: Routes = [
@@ -90,6 +91,10 @@ const routes: Routes = [
   {
     path:'blogs/:id',
     component: BlogDetailComponent,
+  },
+  {
+    path:'blog-editor',
+    component: BlogEditorComponent,
   },
 
 
