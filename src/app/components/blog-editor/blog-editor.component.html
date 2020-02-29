@@ -1,22 +1,28 @@
-<mat-card class="full-scr marginned">
-    <mat-card-actions class="action-cont">
-        <button (click)="action('bold')"><b>B</b></button>
-        <button (click)="action('italic')"><i>I</i></button>
-        <button (click)="action('underline')"><u>U</u></button>
-        <button (click)="action('JustifyLeft')">Justify Left</button>
-        <button (click)="action('JustifyCenter')">Justify Center</button>
-        <button (click)="action('JustifyRight')">Justify Right</button>
-    </mat-card-actions>
-    <mat-card-content class="paragraph">
-
-        <p contenteditable="true" class="bigger-text"><strong>Blog Title</strong></p>
-    </mat-card-content>
-    <mat-card-content class="paragraph">
-
-        <p contenteditable="true">Blog Content</p>
-    </mat-card-content>
-
-    <mat-card-actions>
-        <button>Save Post</button>
-    </mat-card-actions>
-</mat-card>
+<div id="main-cont">
+    <mat-card class="full-scr marginned">
+        <mat-card-actions class="action-cont">
+            <button mat-button (click)="action('bold')"><b>B</b></button>
+            <button mat-button (click)="action('italic')"><i>I</i></button>
+            <button mat-button (click)="action('underline')"><u>U</u></button>
+            <button mat-button (click)="action('JustifyLeft')">Justify Left</button>
+            <button mat-button (click)="action('JustifyCenter')">Justify Center</button>
+            <button mat-button (click)="action('JustifyRight')">Justify Right</button>
+        </mat-card-actions>
+        <mat-card-content class="paragraph">
+    
+            <p contenteditable="true" class="bigger-text"><strong>Blog Title</strong></p>
+        </mat-card-content>
+        <mat-card-content class="paragraph">
+    
+            <p contenteditable="true">Blog Image Path</p>
+        </mat-card-content>
+        <mat-card-content class="paragraph">
+    
+            <p contenteditable="true">Blog Content</p>
+        </mat-card-content>
+    
+        <mat-card-actions>
+            <button mat-button>Save Post</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

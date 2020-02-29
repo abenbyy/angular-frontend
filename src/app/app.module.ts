@@ -92,6 +92,16 @@ import { BlogComponent } from './components/blog/blog.component';
 import { BlogDetailComponent } from './components/blog-detail/blog-detail.component';
 import { HistoryComponent } from './components/history/history.component';
 import { BlogEditorComponent } from './components/blog-editor/blog-editor.component';
+import { PromoComponent } from './components/promo/promo.component';
+import { PromoDetailComponent } from './components/promo-detail/promo-detail.component';
+import { AdminAuthComponent }from './components/admin-auth/admin-auth.component';
+import { ManageEventComponent } from './components/manage-event/manage-event.component';
+import { ManageComponent } from './components/manage/manage.component';
+import { ManageBlogComponent } from './components/manage-blog/manage-blog.component';
+import { ManageFlightComponent } from './components/manage-flight/manage-flight.component';
+import { ManageHotelComponent } from './components/manage-hotel/manage-hotel.component';
+import { ManageTrainComponent } from './components/manage-train/manage-train.component';
+
 
 
 let GOOGLEAUTH_ID:string = "385839845308-kc4slf9ji1rufjj36bf246l4rhjfm9n7.apps.googleusercontent.com";
@@ -152,6 +162,7 @@ PortalModule,
 ScrollingModule,
 ]
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -179,7 +190,17 @@ ScrollingModule,
     BlogComponent,
     BlogDetailComponent,
     BlogEditorComponent,
-    HistoryComponent
+    HistoryComponent,
+    PromoComponent,
+    PromoDetailComponent,
+    AdminAuthComponent,
+    ManageComponent,
+    ManageEventComponent,
+    ManageBlogComponent,
+    ManageFlightComponent,
+    ManageHotelComponent,
+    ManageTrainComponent
+    
     
   ],
   entryComponents:[

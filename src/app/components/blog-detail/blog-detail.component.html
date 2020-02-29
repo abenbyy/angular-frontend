@@ -8,6 +8,9 @@
             <mat-card-title>
                 {{selectedBlog.title}}
             </mat-card-title>
+            <mat-card-subtitle>
+                {{selectedBlog.category}}
+            </mat-card-subtitle>
             <mat-card-actions class="share-cont">
                 <button style="background-color: #3B5998;" (click)="share('Facebook')" class="share-button">Share</button>
                 <button style="background-color: #00B900;" (click)="share('Line')"  class="share-button">Line</button>

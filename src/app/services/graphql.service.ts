@@ -495,6 +495,7 @@ export class GraphqlService {
           id,
           title,
           content,
+          category,
           image
         }
       }`,
@@ -509,6 +510,7 @@ export class GraphqlService {
         blog(id: $id){
           id,
           title,
+          category,
           content,
           image
         }
@@ -527,9 +529,81 @@ export class GraphqlService {
           id,
           title,
           content,
+          category,
           image
         }
       }`,
+    })
+  }
+
+  getAllPromos():Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+      query GetAllPromos{
+        allpromos{
+          id,
+          title,
+          content,
+          image,
+          code,
+          description,
+        }
+      }`,
+      fetchPolicy:"no-cache",
+    })
+  }
+
+  getPromo(id: number):Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+      query GetPromo($id: Int){
+        promo(id: $id){
+          id,
+          title,
+          content,
+          image,
+          code,
+          description,
+        }
+      }`,
+      variables:{
+        "id": id
+      }
+    })
+  }
+
+  getOtherPromos(id: number):Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+      query GetOtherPromos($id: Int){
+        otherpromos(id: $id){
+          id,
+          title,
+          content,
+          image,
+          code,
+          description,
+        }
+      }`,
+      variables:{
+        "id": id
+      }
+    })
+  }
+
+  getAdmin(user: string, pass: string):Observable<Query>{
+    return this.apollo.query<Query>({
+      query: gql`
+      query GetAdmin($user: String, $pass: String){
+        admin(username:$user, password: $pass){
+          username,
+          password
+        }
+      }`,
+      variables:{
+        "user": user,
+        "pass": pass
+      }
     })
   }
 

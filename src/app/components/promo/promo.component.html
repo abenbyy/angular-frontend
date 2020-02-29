@@ -1,0 +1,11 @@
+<div id="main-cont">
+    <mat-card (click)="goToDetail(promo)" *ngFor="let promo of promos" class="promo-card">
+        <div>
+            <img mat-card-image src="{{promo.image}}" alt="">
+        </div>
+        <br>
+        <mat-card-content class="bigger-text">
+            <strong>{{promo.title}}</strong>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -6,9 +6,24 @@ p{
     height: 100%;
 }
 
-.action-cont{
+.full-scr{
+    width: 80vw;
+    margin: 25px 0;
+    
+}
+
+#main-cont{
+    width: 100vw;
     @include dfjccaic();
+    background-color: $hcolor;
+}
+
+.action-cont{
+    
+    @include dfjcsaaic();
     button{
+        border: solid;
+        border-width: 1px;
         padding: 10px;
         margin: 10px 0;
     }

@@ -17,6 +17,15 @@ import { OrderEntertainmentComponent } from './components/order-entertainment/or
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogDetailComponent } from './components/blog-detail/blog-detail.component';
 import { BlogEditorComponent } from './components/blog-editor/blog-editor.component';
+import { PromoComponent } from './components/promo/promo.component';
+import { PromoDetailComponent } from './components/promo-detail/promo-detail.component';
+import { AdminAuthComponent } from './components/admin-auth/admin-auth.component';
+import { ManageComponent } from './components/manage/manage.component';
+import { ManageEventComponent } from './components/manage-event/manage-event.component';
+import { ManageBlogComponent } from './components/manage-blog/manage-blog.component';
+import { ManageFlightComponent } from './components/manage-flight/manage-flight.component';
+import { ManageTrainComponent } from './components/manage-train/manage-train.component';
+import { ManageHotelComponent } from './components/manage-hotel/manage-hotel.component';
 
 
 const routes: Routes = [
@@ -96,6 +105,43 @@ const routes: Routes = [
     path:'blog-editor',
     component: BlogEditorComponent,
   },
+  {
+    path:'promos',
+    component: PromoComponent,
+  },
+  {
+    path:'promos/:id',
+    component: PromoDetailComponent,
+  },
+  {
+    path:'admin/auth',
+    component: AdminAuthComponent,
+  },
+  {
+    path:'admin/manage',
+    component: ManageComponent,
+  },
+  {
+    path:'admin/manage/event',
+    component: ManageEventComponent,
+  },
+  {
+    path:'admin/manage/blog',
+    component: ManageBlogComponent,
+  },
+  {
+    path:'admin/manage/flight',
+    component: ManageFlightComponent,
+  },
+  {
+    path:'admin/manage/train',
+    component: ManageTrainComponent,
+  },
+  {
+    path:'admin/manage/hotel',
+    component: ManageHotelComponent,
+  },
+
 
 
 

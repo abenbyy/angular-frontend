@@ -1,0 +1,18 @@
+@import '../../app.component.scss';
+div{
+    @include dfjccaic();
+    background-color: $hcolor;
+    padding: 10px;
+}
+
+mat-card{
+    margin: 20px;
+    width: 20vw;
+    @include dfjccaic();
+    flex-direction: column;
+}
+
+button{
+    background-color: $hcolor;
+    color: white;
+}

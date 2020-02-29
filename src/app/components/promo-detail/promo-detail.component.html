@@ -1,0 +1,43 @@
+<br><br>
+<div id="main-cont">
+    <div id="main-left">
+        <mat-card>
+            <div id="main-promo-image">
+                <img mat-card-image src="{{selectedPromo.image}}" alt="">
+            </div>
+            <mat-card-title>
+                {{selectedPromo.title}}
+            </mat-card-title>
+            <mat-card-actions class="share-cont">
+                <button style="background-color: #3B5998;" (click)="share('Facebook')" class="share-button">Share</button>
+                <button style="background-color: #00B900;" (click)="share('Line')"  class="share-button">Line</button>
+                <button style="background-color: #1EBEA5;" (click)="share('Whatsapp')"  class="share-button">Whatsapp</button>
+            </mat-card-actions>
+            <mat-card-content>
+                <div id="main-promo-content">
+                    {{selectedPromo.content}}
+                    <br><br>
+                    <mat-card id="promo-code">
+                        <div>
+                            {{selectedPromo.description}}
+                        </div>
+                        <div class="blue-text">
+                            Kode Promo: {{selectedPromo.code}}
+                        </div>
+                    </mat-card>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div id="main-right">
+        <div class="center-content" style="margin-bottom: 10px;"><strong>Other Promos</strong></div>
+        <mat-card style="margin-bottom: 10px;" *ngFor="let opromo of otherPromos">
+            <div class="other-promo-image">
+                <img mat-card-image src="{{opromo.image}}" alt="">
+            </div>
+            <mat-card-subtitle>
+                <strong>{{opromo.title}}</strong>
+            </mat-card-subtitle>
+        </mat-card>
+    </div>
+</div>

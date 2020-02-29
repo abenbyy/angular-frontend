@@ -1,0 +1,17 @@
+<div>
+    <br>
+    <mat-card>
+        <mat-card-title>Admin Login</mat-card-title>
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput [formControl]="user" type="text">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [formControl]="pass" type="password">
+        </mat-form-field>
+
+        <button (click)="validate()" mat-button>Login</button>
+    </mat-card>
+    <br>
+</div>

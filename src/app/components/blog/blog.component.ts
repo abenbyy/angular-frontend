@@ -13,8 +13,11 @@ import { Router } from '@angular/router';
 export class BlogComponent implements OnInit {
 
   blog$: Subscription
+  cache: Blog[]
   blogs: Blog[]
   temp: Blog[]
+
+  scrollIdx: number
   constructor(
     private graphqlService: GraphqlService,
     private searchService: SearchService,
@@ -22,11 +25,20 @@ export class BlogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.scrollIdx = 0
+    this.blogs = []
     this.blog$ = this.graphqlService.getAllBlogs()
-    .subscribe(query =>{
-      this.blogs = query.data.allblogs
+    .subscribe(async query =>{
+      this.cache = query.data.allblogs
+      await this.sliceData();
     })
+
+    document.onscroll = function(){
+      if(window.scrollY + window.innerHeight >= document.body.scrollHeight){
+        this.scrollIdx++
+        this.sliceData()
+      }
+    }.bind(this)
 
     setInterval(function(){
       
@@ -39,9 +51,10 @@ export class BlogComponent implements OnInit {
   }
 
   compareData(){
-    if(this.blogs.length < this.temp.length){
+    if(this.cache.length < this.temp.length){
       alert("New Post Has been Posted!")
-      this.blogs = this.temp
+      this.cache = this.temp
+      this.sliceData();
     }
   }
 
@@ -49,5 +62,16 @@ export class BlogComponent implements OnInit {
     //this.searchService.selectedBlog = val
     this.router.navigate(['./blogs',val.id])
   }
+
+  sliceData(){
+    let t = this.cache.slice(this.scrollIdx *5 , this.scrollIdx * 5+5)
+
+    this.blogs.push(...t)
+  }
+
+  goToEditor(){
+    this.router.navigate(['./blog-editor'])
+  }
+  
 
 }

@@ -1,4 +1,9 @@
-<div id="main-cont">
+
+<div class="main-cont">
+    <button mat-button class="add-btn" (click)="goToEditor()">Add Post</button>
+</div>
+<div class="main-cont">
+    
     <mat-card (click)="goToDetail(blog)" *ngFor="let blog of blogs" class="blog-card">
         <div>
             <img mat-card-image src="{{blog.image}}" alt="">

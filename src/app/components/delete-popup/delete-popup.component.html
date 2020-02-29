@@ -1,0 +1,14 @@
+<div>
+    <div *ngIf = "!isLoading">
+        <div>
+            Are you sure you want to delete this data?
+        </div>
+        <div>
+            <button mat-button (click)="no()">Cancel</button>
+            <button mat-button (click)="yes()">Confirm</button>
+        </div>
+    </div>
+    <div *ngIf = "isLoading">
+        <mat-spinner></mat-spinner>
+    </div>
+</div>
