@@ -31,6 +31,8 @@ import { EventEditorComponent } from './components/event-editor/event-editor.com
 import { FlightEditorComponent } from './components/flight-editor/flight-editor.component';
 import { TrainEditorComponent } from './components/train-editor/train-editor.component';
 import { HotelEditorComponent } from './components/hotel-editor/hotel-editor.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ChatDetailComponent } from './components/chat-detail/chat-detail.component';
 
 
 const routes: Routes = [
@@ -186,6 +188,16 @@ const routes: Routes = [
     path:'admin/manage/hotel',
     component: ManageHotelComponent,
   },
+  {
+    path:'chat',
+    component: ChatComponent,
+  },
+  {
+    path:'chat/:id',
+    component: ChatDetailComponent,
+  },
+
+
 
 
 

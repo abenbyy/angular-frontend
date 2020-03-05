@@ -43,6 +43,7 @@ export class BlogEditorComponent implements OnInit {
     document.getElementById("title").innerText = this.blog.title
     document.getElementById("category").innerText = this.blog.category
     document.getElementById("content").innerText = this.blog.content
+    this.imgSrc = this.blog.image
   }
 
   action(val){
@@ -64,7 +65,7 @@ export class BlogEditorComponent implements OnInit {
   _handleReaderLoaded(e) {
     let reader = e.target;
     this.imgSrc = reader.result;
-    //console.log(this.imgSrc)
+    console.log(this.imgSrc)
   }
 
   updateBlog(){

@@ -107,6 +107,8 @@ import { TrainEditorComponent } from './components/train-editor/train-editor.com
 import { HotelEditorComponent } from './components/hotel-editor/hotel-editor.component';
 import { FlightEditorComponent } from './components/flight-editor/flight-editor.component';
 import { EventEditorComponent } from './components/event-editor/event-editor.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ChatDetailComponent } from './components/chat-detail/chat-detail.component';
 
 
 
@@ -211,7 +213,9 @@ ScrollingModule,
     ManageBlogComponent,
     ManageFlightComponent,
     ManageHotelComponent,
-    ManageTrainComponent
+    ManageTrainComponent,
+    ChatComponent,
+    ChatDetailComponent,
     
     
   ],

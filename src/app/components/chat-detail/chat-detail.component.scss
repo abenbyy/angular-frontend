@@ -1,0 +1,68 @@
+@import '../../app.component.scss';
+.chat-container{
+    margin-top: 2vw;
+    width: 100%;
+    .chat-wrapper{
+        width: 70%;
+        margin: auto;
+        border: 1px solid black;
+        border-radius: 6px;
+        .chat-data{
+            width: 100%;
+            height: 35vw;
+            overflow: auto;
+            .data{
+                width: 100%;
+                display: flex;
+                .chat-bubble{
+                    margin: 1vw;
+                    padding: 0.5vw;
+                    border: 1px solid black;
+                    border-radius: 6px;
+                    width: fit-content;
+                }
+            }
+        }
+        .bottom{
+            padding: 1vw;
+            display: flex;
+            .input-field{
+                width: 100%;
+                font-size: 14px;
+                padding: 10px;
+                width: 100%;
+                border-radius: 8px;
+                border: 1px solid black;
+                box-sizing: border-box;
+            }
+        }
+    }
+    @media only screen and (max-width: 560px) {
+        .chat-wrapper{
+            width: 100%;
+        }
+    }
+}
+
+.chat-img{
+    width: 100%;
+    cursor: pointer;
+}
+
+.submit-btn{
+    margin-left: 0.5vw;
+    background-color: #fedd00;
+    color:#0054d2;
+    padding: 1vw 2.5vw;
+    text-align: center;
+    border-radius: 2.5vw;
+    &:hover{
+        cursor: pointer;
+        background-color: rgba($color: #fedd00, $alpha: 0.7);
+    }
+}
+
+.back{
+    margin: 1vw;
+    width: fit-content;
+}

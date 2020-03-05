@@ -1,0 +1,28 @@
+<div id="main-cont">
+    <br>
+    <div class="submit-btn back" (click)="backToHome()">
+        Back To Home
+    </div>
+    
+    <div class="chat-container">
+            <mat-card *ngFor="let c of chats;let i = index" style="background-color: white; margin: 10px;">
+
+               <div class="chat-room-wrapper" style="display:flex;" (click)="openChat(i)">
+                    <div style="margin-right: 1vw;">
+                        Room ID: {{c.id}}
+                    </div>
+                    <div *ngIf="validateUser1Id(i)" style="margin-right: 1vw;">
+                        User ID: {{c.user1}}
+                    </div>
+                    <div *ngIf="validateUser2Id(i)" style="margin-right: 1vw;">
+                        User ID: {{c.user2}}
+                    </div>
+               </div>
+            </mat-card>
+    </div>
+    
+    <div class="submit-btn" (click)="createNewChat()" style="width:30%;margin: auto;">
+        New Chat
+    </div>
+    <br>
+</div>

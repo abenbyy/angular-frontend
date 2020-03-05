@@ -1,0 +1,41 @@
+<div class="submit-btn back" (click)="backToMain()">
+    Back To Home
+</div>
+<div class="chat-container">
+    <div class="chat-wrapper">
+        <div class="chat-data">
+            <div *ngFor="let c of chats;let i = index">
+                <div class="data" *ngIf="!checkUserId(i)" style="justify-content: flex-start;">
+                    <div class="chat-bubble" style="width: 35%; background-color:gainsboro;">
+                        <div *ngIf="checkContentIsImage(i)==''">
+                            {{c.content}}
+                        </div>
+                        <div *ngIf="checkContentIsImage(i)!=''">
+                            <img src="{{imgSrc}}" class="chat-img" (click)="openImage(checkContentIsImage(i))">
+                            <a href="{{imgSrc}}" download="" style="text-decoration: none;">Download</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="data" *ngIf="checkUserId(i)" style="justify-content: flex-end;">
+                    <div class="chat-bubble" style="width: 35%;background-color:  #00b900;">
+                        <div *ngIf="checkContentIsImage(i)==''">
+                            {{c.content}}
+                        </div>
+                        <div *ngIf="checkContentIsImage(i)!=''">
+                            <img src="{{imgSrc}}" class="chat-img" (click)="openImage(checkContentIsImage(i))">
+                            <a href="{{imgSrc}}" download="" style="text-decoration: none;">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="bottom">
+            <input type="text" class="input-field" [(ngModel)]="inputChat">
+            <input type="file" #fileInput (change)="onFileChange($event)" style="display: none;">
+            <div class="submit-btn" (click)="fileInput.click()">Image</div>
+            <div class="submit-btn" (click)="sendMsg()" *ngIf="inputChat!=null&&inputChat!=''">Send</div>
+        </div>
+    </div>
+</div>

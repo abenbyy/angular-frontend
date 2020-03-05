@@ -26,6 +26,7 @@ export class GraphqlService {
       query: gql`
         query GetUserByPhoneOrEmail($arg: String){
           userbyphoneoremail(arg:$arg){
+            id,
             firstname,
             lastname,
             password,

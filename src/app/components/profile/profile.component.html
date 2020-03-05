@@ -16,10 +16,7 @@
         </div>
         <div id="right-side-profile">
             <mat-form-field>
-                <mat-label>Title</mat-label>
-                <mat-select [(ngModel)]="selectedTitle" name="title">
-                    <mat-option *ngFor="let title of titles" [value]="title.value">{{title.viewValue}}</mat-option>
-                </mat-select>
+                <input matInput type="text" placeholder="Title" [formControl]="titleControl" value="{{accountService.user.firstname}}">
             </mat-form-field>
 
             <mat-form-field>
@@ -31,14 +28,16 @@
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>City</mat-label>
-                <mat-select [(ngModel)]="selectedCity" name="city">
-                    <mat-option *ngFor="let city of cities" [value]="city.value">{{city.viewValue}}</mat-option>
-                </mat-select>
+                <input matInput type="text" placeholder="City Name"  [formControl]="cityControl" value="{{accountService.user.lastname}}">
+            </mat-form-field>
+            
+            <mat-form-field>
+                <input matInput type="text" placeholder="Phone Number"  [formControl]="phoneControl" value="{{accountService.user.lastname}}">
             </mat-form-field>
 
+
             <mat-form-field>
-                <input matInput type="text" placeholder="Address">
+                <input matInput type="text" placeholder="Phone Number"  [formControl]="phoneControl" value="{{accountService.user.lastname}}">
             </mat-form-field>
 
             <mat-form-field>

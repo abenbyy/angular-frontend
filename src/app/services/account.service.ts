@@ -16,7 +16,8 @@ export class AccountService {
   public setUser(currUser: User):void{
     this.user = currUser
     this.isLoggedIn = true
-    console.log(this.user)
+    console.log(this.user.id)
+    sessionStorage.setItem("userid",this.user.id.toString())
   }
 
   public destroyUser():void{

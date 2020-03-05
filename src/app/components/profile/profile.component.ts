@@ -13,21 +13,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
-  titles: Dropdown[] = [
-    {value: 'Mr.', viewValue: 'Mr.'},
-    {value: 'Mrs.', viewValue: 'Mrs.'},
-    {value: 'Miss', viewValue: 'Miss'},
-  ]
-  selectedTitle: string
-
-  cities: Dropdown[] = [
-    {value: 'Jakarta', viewValue: 'Jakarta'},
-    {value: 'Bogor', viewValue: 'Bogor'},
-    {value: 'Depok', viewValue: 'Depok'},
-    {value: 'Tangerang', viewValue: 'Tangerang'},
-    {value: 'Bekasi', viewValue: 'Bekasi'},
-  ]
+  selectedTitle: string 
   selectedCity: string
 
 
@@ -36,6 +22,18 @@ export class ProfileComponent implements OnInit {
   ])
 
   lastNameControl = new FormControl('',[
+    Validators.required,
+  ])
+
+  cityControl = new FormControl('',[
+    Validators.required,
+  ])
+
+  titleControl = new FormControl('',[
+    Validators.required,
+  ])
+
+  phoneControl = new FormControl('',[
     Validators.required,
   ])
   constructor(
@@ -50,14 +48,24 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile(){
+    var title = this.titleControl.value
+    var firstname = this.firstNameControl.value
+    var lastname = this.lastNameControl.value
+    var phone = this.phoneControl.value
+    var city = this.cityControl.value
     
   }
 
-  validatePhoneNumber(val: string){
-    this.http.get("http://apilayer.net/api/validate?access_key=0317a1b34af44bd06b69e5e26b563b45&number="+val+"&country_code=&format=1")
+  validatePhoneNumber(){
+    var res = ""
+    this.http.get("http://apilayer.net/api/validate?access_key=0317a1b34af44bd06b69e5e26b563b45&number="+this.phoneControl.value+"&country_code=&format=1")
     .subscribe((response: Response)=>{
       var res = response.json()
-      return res["valid"]
+      if(res["valid"] === true){
+        this.updateProfile()
+      }else{
+        return
+      }
     })
   }
 

@@ -12,7 +12,7 @@ export class AdminService {
   deletedType: string
 
   constructor() { 
-    
+    localStorage.setItem("isLoggedin","false")
   }
 
   setAdmin(){
@@ -20,11 +20,11 @@ export class AdminService {
   }
 
   getAdmin(){
-    if(localStorage.getItem("isLoggedin") === null){
-      return false
+    if(localStorage.getItem("isLoggedin") === "true"){
+      return true
     }
     else{
-      return true
+      return false
     }
   }
 
