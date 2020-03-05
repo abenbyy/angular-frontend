@@ -1,4 +1,5 @@
 export class Airport {
+    id: number
     name        :string
     code        :string
     city        :string

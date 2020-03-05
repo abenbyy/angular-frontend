@@ -1,0 +1,40 @@
+@import '../../app.component.scss';
+
+p{
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.full-scr{
+    width: 80vw;
+    margin: 25px 0;
+    
+}
+img{
+    width: 50vw;
+    width: 20vw;
+}
+
+#main-cont{
+    width: 100vw;
+    @include dfjccaic();
+    background-color: $hcolor;
+}
+
+.paragraph{
+    @include dfjccaic();
+    border: solid;
+    border-color: gray;
+    border-width: 1px;
+
+}
+
+.bigger-text{
+    font-size: 20px;
+}
+
+.dfjcsaaic{
+    @include dfjcsaaic();
+}
+

@@ -9,6 +9,7 @@
     background-color: $hcolor;
 }
 
+
 .blog-card{
     
     width: calc(95vw/4);
@@ -30,4 +31,12 @@
 .delete-button{
     color: white;
     background-color: $dcolor;
+}
+
+.blue-back{
+    background-color: $hcolor;
+}
+
+.center-content{
+    @include dfjccaic()
 }

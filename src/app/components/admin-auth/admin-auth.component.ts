@@ -38,7 +38,7 @@ export class AdminAuthComponent implements OnInit {
     this.admin$ = this.grapqhlService.getAdmin(this.user.value, this.pass.value)
     .subscribe(query =>{
       if(query.data.admin.username === this.user.value && query.data.admin.password === this.pass.value){
-        this.adminService.isLoggedIn = true
+        this.adminService.setAdmin()
         this.router.navigate(['./admin/manage'])
       }else{
         

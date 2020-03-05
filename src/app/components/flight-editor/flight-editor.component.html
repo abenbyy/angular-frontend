@@ -1,0 +1,97 @@
+<div id="main-cont">
+    <mat-card class="full-scr marginned">
+        <mat-card-content class="paragraph">
+    
+            <p id="airline" contenteditable="true" class="bigger-text">Airline Id</p>
+        </mat-card-content>
+
+        <mat-card-content class="paragraph">
+    
+            <p id="from" contenteditable="true">Airport From Id</p>
+        </mat-card-content>
+
+        <mat-card-content class="paragraph">
+    
+            <p id="to" contenteditable="true">Airport To Id</p>
+        </mat-card-content>
+        <mat-card-content class="paragraph">
+    
+            <p id="duration" contenteditable="true">Flight Duration</p>
+        </mat-card-content>
+
+        <mat-card-content class="paragraph">
+    
+            <p id="price" contenteditable="true">Flight Price</p>
+        </mat-card-content>
+
+
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Departure Date</mat-label>
+                <input matInput [matDatepicker]="dep"
+                       (dateInput)="dep('input', $event)">
+                <mat-datepicker-toggle matSuffix [for]="dep"></mat-datepicker-toggle>
+                <mat-datepicker #dep></mat-datepicker>
+              </mat-form-field>
+        </mat-card-content>
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Arrival Date</mat-label>
+                <input matInput [matDatepicker]="arr"
+                       (dateInput)="arr('input', $event)">
+                <mat-datepicker-toggle matSuffix [for]="arr"></mat-datepicker-toggle>
+                <mat-datepicker #arr></mat-datepicker>
+              </mat-form-field>
+        </mat-card-content>
+    
+        
+            Routes: 
+            <mat-card-content class="paragraph">
+    
+                <p id="rfrom" contenteditable="true">From</p> 
+                
+            </mat-card-content>
+            <mat-card-content class="paragraph">
+                <p id="rfromcode" contenteditable="true">From Code</p>
+            </mat-card-content>
+            <mat-card-content class="paragraph">
+    
+                <p id="rto" contenteditable="true">To</p> 
+                
+            </mat-card-content>
+            <mat-card-content class="paragraph">
+                <p id="rtocode" contenteditable="true">To Code</p>
+            </mat-card-content>
+            <mat-card-content class="paragraph">
+    
+                <p id="fdur" contenteditable="true">Flight Duration</p> 
+                
+            </mat-card-content>
+            <mat-card-content class="paragraph">
+                <p id="tdur" contenteditable="true">Transit Duration</p>
+            </mat-card-content>
+            <mat-card-content class="paragraph">
+    
+                <p id="type" contenteditable="true">Aeroplane Type</p> 
+                
+            </mat-card-content>
+            <mat-card-content class="paragraph">
+                <p id="name" contenteditable="true">Aeroplane Name</p>
+            </mat-card-content>
+            
+            <button mat-button (click)="addRoute()">Add Route</button>
+            <mat-card *ngFor="let route of routes">
+                {{route.fromcode}} <br>
+                {{route.tocode}} <br>
+                {{route.flightduration}} <br>
+                {{route.transitduration}} <br>
+                {{route.aeroplanetype}} - {{route.aeroplanename}} <br>
+            </mat-card>
+        
+
+        <mat-card-actions>
+            <button mat-button (click)="actRoute.snapshot.paramMap.get('id')? updateFlight() : createFlight()">Save Flight</button>
+        </mat-card-actions>
+
+    </mat-card>
+</div>

@@ -23,7 +23,10 @@ export class ManageComponent implements OnInit {
       this.router.navigate(['./admin/manage/event'])
     }
     else if(val === "Blog"){
-      
+      this.router.navigate(['./admin/manage/blog'])
+    }
+    else if(val === "Hotel"){
+      this.router.navigate(['./admin/manage/hotel'])
     }
     
   }

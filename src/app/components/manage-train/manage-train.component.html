@@ -1,1 +1,43 @@
-<p>manage-train works!</p>
+
+<div class="blue-back center-content">
+    <mat-card style="margin-top: 10px;">
+        <button mat-button (click)="addTrip()">Add Trip</button>
+    </mat-card>
+</div>
+<div id="main-cont">
+    <mat-card class="trip-card" *ngFor="let trip of displayed">
+        <mat-card-title>
+            {{trip.from.code}}
+            {{trip.to.code}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            IDR {{trip.price}}
+            
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            Departure: {{trip.departure}}
+            
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            Arrival:  {{trip.arrival}}
+            
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            {{trip.duration}} minutes
+        </mat-card-subtitle>
+        <mat-card-actions class="action-cont">
+            <button mat-button (click)="updateTrip(trip.id)" class="update-button">Update</button>
+            <button mat-button (click)="deleteTrip(trip.id)" class="delete-button">Delete</button>
+        </mat-card-actions>
+    </mat-card>
+
+    
+</div>
+
+<div class="blue-back center-content">
+    <mat-card style="margin: 10px 0 ;">
+        <button mat-button (click)="paginate('left')"><mat-icon>arrow_left</mat-icon></button>
+        <span>{{pageIdx+1}} / {{totalPage}}</span>
+        <button mat-button (click)="paginate('right')"><mat-icon>arrow_right</mat-icon></button>
+    </mat-card>
+</div>

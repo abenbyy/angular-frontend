@@ -20,9 +20,7 @@
 <div class="full-screen ent-cont">
     <mat-icon (click)="slideLeft()" class="bigger-text">arrow_left</mat-icon>
     <mat-card class="ent-card slides" *ngFor="let best of displayedBests">
-        <img *ngIf="best.type==='Activity'" mat-card-image src="../../../assets/images/activity.jpg" alt="">
-        <img *ngIf="best.type==='Attraction'" mat-card-image src="../../../assets/images/attraction.jpg" alt="">
-        <img *ngIf="best.type==='Event'" mat-card-image src="../../../assets/images/event.jpg" alt="">
+        <img mat-card-image src="{{best.image}}" alt="">
         <mat-card-content (click)="goToEntertainmentDetail(best)">
             <strong>{{best.name}}</strong>
             <br>
@@ -46,7 +44,7 @@
 
 <div class="full-screen ent-cont">
     <mat-card class="ent-card" *ngFor="let activity of trendingActivities">
-        <img mat-card-image src="../../../assets/images/activity.jpg" alt="">
+        <img mat-card-image src="{{activity.image}}" alt="">
         <mat-card-content (click)="goToEntertainmentDetail(activity)">
             <strong>{{activity.name}}</strong>
             <br>
@@ -68,7 +66,7 @@
 
 <div class="full-screen ent-cont">
     <mat-card class="ent-card" *ngFor="let attraction of trendingAttractions">
-        <img mat-card-image src="../../../assets/images/attraction.jpg" alt="">
+        <img mat-card-image src="{{attraction.image}}" alt="">
         <mat-card-content (click)="goToEntertainmentDetail(attraction)">
             <strong>{{attraction.name}}</strong>
             <br>
@@ -89,7 +87,7 @@
 
 <div class="full-screen ent-cont">
     <mat-card class="ent-card" *ngFor="let event of trendingEvents">
-        <img mat-card-image src="../../../assets/images/event.jpg" alt="">
+        <img mat-card-image src="{{event.image}}" alt="">
         <mat-card-content (click)="goToEntertainmentDetail(event)">
             <strong>{{event.name}}</strong>
             <br>

@@ -1,0 +1,56 @@
+<div id="main-cont">
+    <mat-card class="full-scr marginned">
+        
+        <mat-card-content class="paragraph">
+    
+            <p id="train" contenteditable="true" class="bigger-text">Train Id</p>
+        </mat-card-content>
+
+        <mat-card-content class="paragraph">
+    
+            <p id="from" contenteditable="true">From Station Id</p>
+        </mat-card-content>
+
+        <mat-card-content class="paragraph">
+    
+            <p id="to" contenteditable="true">To Station Id</p>
+        </mat-card-content>
+        <mat-card-content class="paragraph">
+    
+            <p id="duration" contenteditable="true">Train Trip Duration</p>
+        </mat-card-content>
+
+        <mat-card-content class="paragraph">
+    
+            <p id="price" contenteditable="true">Train Trip Price</p>
+        </mat-card-content>
+
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Trip Departure</mat-label>
+                <input matInput [matDatepicker]="dep"
+                       (dateInput)="dep('input', $event)">
+                <mat-datepicker-toggle matSuffix [for]="dep"></mat-datepicker-toggle>
+                <mat-datepicker #dep></mat-datepicker>
+              </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Trip Arrival</mat-label>
+                <input matInput [matDatepicker]="arr"
+                       (dateInput)="arr('input', $event)">
+                <mat-datepicker-toggle matSuffix [for]="arr"></mat-datepicker-toggle>
+                <mat-datepicker #arr></mat-datepicker>
+              </mat-form-field>
+        </mat-card-content>
+    
+        
+        
+
+        <mat-card-actions>
+            <button mat-button (click)="actRoute.snapshot.paramMap.get('id')? updateTrip() : createTrip()">Save Trip</button>
+        </mat-card-actions>
+
+    </mat-card>
+</div>

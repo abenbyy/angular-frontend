@@ -18,7 +18,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -101,6 +101,12 @@ import { ManageBlogComponent } from './components/manage-blog/manage-blog.compon
 import { ManageFlightComponent } from './components/manage-flight/manage-flight.component';
 import { ManageHotelComponent } from './components/manage-hotel/manage-hotel.component';
 import { ManageTrainComponent } from './components/manage-train/manage-train.component';
+import { DeletePopupComponent } from './components/delete-popup/delete-popup.component';
+import { OrderComponent } from './components/order/order.component';
+import { TrainEditorComponent } from './components/train-editor/train-editor.component';
+import { HotelEditorComponent } from './components/hotel-editor/hotel-editor.component';
+import { FlightEditorComponent } from './components/flight-editor/flight-editor.component';
+import { EventEditorComponent } from './components/event-editor/event-editor.component';
 
 
 
@@ -190,9 +196,15 @@ ScrollingModule,
     BlogComponent,
     BlogDetailComponent,
     BlogEditorComponent,
+    TrainEditorComponent,
+    HotelEditorComponent,
+    FlightEditorComponent,
+    EventEditorComponent,
     HistoryComponent,
+    OrderComponent,
     PromoComponent,
     PromoDetailComponent,
+    DeletePopupComponent,
     AdminAuthComponent,
     ManageComponent,
     ManageEventComponent,
@@ -208,6 +220,7 @@ ScrollingModule,
     ChangeSearchWidgetComponent,
     HotelImageSliderComponent,
     HistoryComponent,
+    DeletePopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -229,9 +242,13 @@ ScrollingModule,
     GraphQLModule,
     HttpClientModule,
     
+    
   ],
   providers: [
-    
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
   
   ],
   bootstrap: [AppComponent],

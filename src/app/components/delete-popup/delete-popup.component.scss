@@ -1,0 +1,14 @@
+@import '../../app.component.scss';
+
+#main-cont{
+    width: 100%;
+    height: 100%;
+    @include dfjccaic();
+    
+}
+
+#button-cont{
+    margin-top: 10px;
+    @include dfjcsaaic();
+}
+

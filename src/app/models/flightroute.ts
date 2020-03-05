@@ -3,8 +3,8 @@ export class FlightRoute {
      fromcode   : string
      to         : string
      tocode     : string
-     flightduration: string
-     transitduration: string
+     flightduration: number
+     transitduration: number
      aeroplanetype  : string
      aeroplanename  : string
 }

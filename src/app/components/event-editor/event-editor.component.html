@@ -1,0 +1,84 @@
+<div id="main-cont">
+    <mat-card class="full-scr marginned">
+        <mat-card-actions class="action-cont">
+            <button mat-button (click)="action('bold')"><b>B</b></button>
+            <button mat-button (click)="action('italic')"><i>I</i></button>
+            <button mat-button (click)="action('underline')"><u>U</u></button>
+            <button mat-button (click)="action('JustifyLeft')">Justify Left</button>
+            <button mat-button (click)="action('JustifyCenter')">Justify Center</button>
+            <button mat-button (click)="action('JustifyRight')">Justify Right</button>
+        </mat-card-actions>
+        <mat-card-content class="paragraph">
+    
+            <p id="name" contenteditable="true" class="bigger-text">Event Name</p>
+        </mat-card-content>
+        <mat-card-content style="margin: 10px 10px;">
+            <img src="{{imgSrc}}" alt=""><br>
+            Event Thumbnail
+            <input type="file" accept="image/*" (change)="onFileChange($event)" id="thumbnail" #thumbnail>
+            
+        </mat-card-content>
+
+        <mat-card-content class="paragraph">
+    
+            <p id="type" contenteditable="true">Event Type</p>
+        </mat-card-content>
+
+        <mat-card-content class="paragraph">
+    
+            <p id="address" contenteditable="true">Event Address</p>
+        </mat-card-content>
+        <mat-card-content class="paragraph">
+    
+            <p id="latitude" contenteditable="true">Event Latitude</p>
+        </mat-card-content>
+
+        <mat-card-content class="paragraph">
+    
+            <p id="longitude" contenteditable="true">Event Longitude</p>
+        </mat-card-content>
+
+        <mat-card-content class="paragraph">
+    
+            <p id="description" contenteditable="true">Event description</p>
+        </mat-card-content>
+
+        <mat-card-content class="paragraph">
+    
+            <p id="terms" contenteditable="true">Event Terms</p>
+        </mat-card-content>
+
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="picker"
+                       (dateInput)="addEvent('input', $event)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+        </mat-card-content>
+    
+        
+            Tickets: 
+            <mat-card-content class="paragraph">
+    
+                <p id="tickname" contenteditable="true">Ticket Name</p> 
+                
+            </mat-card-content>
+            <mat-card-content class="paragraph">
+                <p id="tickprice" contenteditable="true">Ticket Price</p>
+            </mat-card-content>
+            
+            <button mat-button (click)="addTicket()">Add Ticket</button>
+            <mat-card *ngFor="let ticket of tickets">
+                {{ticket.name}} <br>
+                {{ticket.price}}
+            </mat-card>
+        
+
+        <mat-card-actions>
+            <button mat-button (click)="actRoute.snapshot.paramMap.get('id')? updateEvent() : createEvent()">Save Event</button>
+        </mat-card-actions>
+
+    </mat-card>
+</div>

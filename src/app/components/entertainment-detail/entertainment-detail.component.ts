@@ -34,12 +34,12 @@ export class EntertainmentDetailComponent implements OnInit {
     
     this.curr = 0
     this.selectedEnt = this.searchService.selectedEnt
-    console.log(this.selectedEnt.latitude, this.selectedEnt.longitude)
+    
     this.map = L.map('leaflet-map').setView([this.selectedEnt.latitude, this.selectedEnt.longitude], 14);
     this.qtys = new Array(this.selectedEnt.tickets.length).fill(0)
     this.showTickets = !this.selectedEnt.needdate
 
-    alert(this.selectedEnt.needdate)
+    
       this.slides = []
       
       var temp = document.querySelectorAll(".slides")

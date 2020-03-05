@@ -1,0 +1,41 @@
+@import '../../app.component.scss';
+
+#main-cont{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: $hcolor;
+}
+
+.trip-card{
+    
+    width: calc(95vw/3);
+    margin: 15px;
+    mat-card-title{
+        font-size: 18px;
+    }
+
+    .action-cont{
+        @include dfjccaic();
+    }
+}
+
+.update-button{
+    color: white;
+    background-color: $hcolor;
+}
+
+.delete-button{
+    color: white;
+    background-color: $dcolor;
+}
+
+.blue-back{
+    background-color: $hcolor;
+}
+
+.center-content{
+    @include dfjccaic()
+}

@@ -6,13 +6,26 @@ import { Injectable } from '@angular/core';
 export class AdminService {
 
 
-  isLoggedIn: boolean
+  //isLoggedIn: boolean
 
   deletedIdx: number
   deletedType: string
 
   constructor() { 
-    this.isLoggedIn = false
+    
+  }
+
+  setAdmin(){
+    localStorage.setItem("isLoggedin","true")
+  }
+
+  getAdmin(){
+    if(localStorage.getItem("isLoggedin") === null){
+      return false
+    }
+    else{
+      return true
+    }
   }
 
 

@@ -26,6 +26,11 @@ import { ManageBlogComponent } from './components/manage-blog/manage-blog.compon
 import { ManageFlightComponent } from './components/manage-flight/manage-flight.component';
 import { ManageTrainComponent } from './components/manage-train/manage-train.component';
 import { ManageHotelComponent } from './components/manage-hotel/manage-hotel.component';
+import { OrderComponent } from './components/order/order.component';
+import { EventEditorComponent } from './components/event-editor/event-editor.component';
+import { FlightEditorComponent } from './components/flight-editor/flight-editor.component';
+import { TrainEditorComponent } from './components/train-editor/train-editor.component';
+import { HotelEditorComponent } from './components/hotel-editor/hotel-editor.component';
 
 
 const routes: Routes = [
@@ -94,6 +99,10 @@ const routes: Routes = [
     component: OrderEntertainmentComponent,
   },
   {
+    path:'order',
+    component: OrderComponent,
+  },
+  {
     path:'blogs',
     component: BlogComponent,
   },
@@ -104,6 +113,42 @@ const routes: Routes = [
   {
     path:'blog-editor',
     component: BlogEditorComponent,
+  },
+  {
+    path:'blog-editor/:id',
+    component: BlogEditorComponent,
+  },
+  {
+    path:'event-editor',
+    component: EventEditorComponent,
+  },
+  {
+    path:'event-editor/:id',
+    component: EventEditorComponent,
+  },
+  {
+    path:'flight-editor',
+    component: FlightEditorComponent,
+  },
+  {
+    path:'flight-editor/:id',
+    component: FlightEditorComponent,
+  },
+  {
+    path:'train-editor',
+    component: TrainEditorComponent,
+  },
+  {
+    path:'train-editor/:id',
+    component: TrainEditorComponent,
+  },
+  {
+    path:'hotel-editor',
+    component: HotelEditorComponent,
+  },
+  {
+    path:'hotel-editor/:id',
+    component: HotelEditorComponent,
   },
   {
     path:'promos',

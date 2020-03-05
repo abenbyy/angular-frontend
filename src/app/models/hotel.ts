@@ -3,7 +3,9 @@ import { HotelFacility } from './hotelfacility'
 import { HotelReview } from './hotelreview'
 
 export class Hotel {
+    id: number
     name: string
+    image: string
     address: string
     rating: number
     star: number

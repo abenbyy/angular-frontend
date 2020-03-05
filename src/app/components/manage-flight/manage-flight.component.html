@@ -1,1 +1,43 @@
-<p>manage-flight works!</p>
+<div class="blue-back center-content">
+    <mat-card style="margin-top: 10px;">
+        <button mat-button (click)="addFlight()">Add Flight</button>
+    </mat-card>
+</div>
+<div id="main-cont">
+    <mat-card class="flight-card" *ngFor="let flight of displayed">
+        <img mat-card-image src="{{flight.airline.image}}" alt="">
+        <mat-card-title>
+            {{flight.from.code}}
+            {{flight.to.code}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            IDR {{flight.price}}
+            
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            Departure: {{flight.departure}}
+            
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            Arrival:  {{flight.arrival}}
+            
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            {{flight.duration}} minutes
+        </mat-card-subtitle>
+        <mat-card-actions class="action-cont">
+            <button mat-button (click)="updateFlight(flight.id)" class="update-button">Update</button>
+            <button mat-button (click)="deleteFlight(flight.id)" class="delete-button">Delete</button>
+        </mat-card-actions>
+    </mat-card>
+
+    
+</div>
+
+<div class="blue-back center-content">
+    <mat-card style="margin: 10px 0 ;">
+        <button mat-button (click)="paginate('left')"><mat-icon>arrow_left</mat-icon></button>
+        <span>{{pageIdx+1}} / {{totalPage}}</span>
+        <button mat-button (click)="paginate('right')"><mat-icon>arrow_right</mat-icon></button>
+    </mat-card>
+</div>

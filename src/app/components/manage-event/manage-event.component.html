@@ -1,1 +1,27 @@
-<p>manage-event works!</p>
+<div class="blue-back center-content">
+    <button class="add-button" (click)="addEvent()" mat-button>Add Event</button>
+</div>
+
+<div id="main-cont">
+    <mat-card class="ent-card" *ngFor="let ent of displayed">
+        <img mat-card-image src="{{ent.image}}" alt="">
+        <mat-card-title>
+            {{ent.name}}
+        </mat-card-title>
+
+        <mat-card-actions class="action-cont">
+            <button mat-button (click)="updateEvent(ent.id)" class="update-button">Update</button>
+            <button mat-button (click)="deleteEvent(ent.id)" class="delete-button">Delete</button>
+        </mat-card-actions>
+    </mat-card>
+
+    
+</div>
+
+<div class="blue-back center-content">
+    <mat-card style="margin: 10px 0 ;">
+        <button mat-button (click)="paginate('left')"><mat-icon>arrow_left</mat-icon></button>
+        <span>{{pageIdx+1}} / {{totalPage}}</span>
+        <button mat-button (click)="paginate('right')"><mat-icon>arrow_right</mat-icon></button>
+    </mat-card>
+</div>

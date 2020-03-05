@@ -1,1 +1,30 @@
-<p>manage-hotel works!</p>
+<div class="blue-back center-content">
+    <mat-card style="margin-top: 10px;">
+        <button mat-button (click)="addHotel()">Add Hotel</button>
+    </mat-card>
+</div>
+
+<div id="main-cont">
+    <mat-card class="hotel-card" *ngFor="let hotel of displayed">
+        <img mat-card-image src="{{hotel.image}}" alt="">
+        <mat-card-title>
+            
+            {{hotel.name}}
+        </mat-card-title>
+
+        <mat-card-actions class="action-cont">
+            <button mat-button (click)="updateHotel(hotel.id)" class="update-button">Update</button>
+            <button mat-button (click)="deleteHotel(hotel.id)" class="delete-button">Delete</button>
+        </mat-card-actions>
+    </mat-card>
+
+    
+</div>
+
+<div class="blue-back center-content">
+    <mat-card style="margin: 10px 0 ;">
+        <button mat-button (click)="paginate('left')"><mat-icon>arrow_left</mat-icon></button>
+        <span>{{pageIdx+1}} / {{totalPage}}</span>
+        <button mat-button (click)="paginate('right')"><mat-icon>arrow_right</mat-icon></button>
+    </mat-card>
+</div>
