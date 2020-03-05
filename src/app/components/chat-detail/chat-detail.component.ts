@@ -5,6 +5,7 @@ import { ChatService } from 'src/app/services/chat.service';
 import { Chat } from 'src/app/models/chat';
 import { AdminService } from 'src/app/services/admin.service';
 import { AccountService } from 'src/app/services/account.service';
+import { ImageModalComponent } from '../image-modal/image-modal.component';
 
 @Component({
   selector: 'app-chat-detail',
@@ -147,9 +148,13 @@ export class ChatDetailComponent implements OnInit {
     }
   }
 
-  openImage(img:string){
-    // console.log(img)
-    //this.imageModal=this.dialog.open(ChatImageModalComponent, {panelClass: 'dialog-box',data:img})
+  openModal(image: string){
+    this.chatService.selectedImg = image
+    this.dialog.open(ImageModalComponent,{
+      height: '80vh',
+      width: '100vw'
+      
+    })
   }
 
 }

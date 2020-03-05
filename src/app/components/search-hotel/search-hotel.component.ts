@@ -86,8 +86,8 @@ export class SearchHotelComponent implements OnInit {
 
   }
   goToDetail(hotel:Hotel){
-    this.searchService.selectedHotel = hotel
-    this.router.navigate(["./detailpage"])
+    //this.searchService.selectedHotel = hotel
+    this.router.navigate(["./hotel",hotel.id])
     
   }
 

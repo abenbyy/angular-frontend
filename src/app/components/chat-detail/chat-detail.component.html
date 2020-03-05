@@ -11,7 +11,7 @@
                             {{c.content}}
                         </div>
                         <div *ngIf="checkContentIsImage(i)!=''">
-                            <img src="{{imgSrc}}" class="chat-img" (click)="openImage(checkContentIsImage(i))">
+                            <img src="{{imgSrc}}" class="chat-img" (click)="openModal({{imgSrc}})">
                             <a href="{{imgSrc}}" download="" style="text-decoration: none;">Download</a>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                             {{c.content}}
                         </div>
                         <div *ngIf="checkContentIsImage(i)!=''">
-                            <img src="{{imgSrc}}" class="chat-img" (click)="openImage(checkContentIsImage(i))">
+                            <img src="{{imgSrc}}" class="chat-img" (click)="openModal({{imgSrc}})">
                             <a href="{{imgSrc}}" download="" style="text-decoration: none;">Download</a>
                         </div>
                     </div>

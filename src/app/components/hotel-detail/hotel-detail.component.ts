@@ -7,6 +7,9 @@ import { HotelImageSliderComponent } from '../hotel-image-slider/hotel-image-sli
 import { PageEvent } from '@angular/material/paginator';
 import { HotelReview } from 'src/app/models/hotelreview';
 import { HotelRoom } from 'src/app/models/hotelroom';
+import { Subscription } from 'rxjs';
+import { GraphqlService } from 'src/app/services/graphql.service';
+import { ActivatedRoute } from '@angular/router';
 
 //import icon from 'leaflet/dist/images/marker-icon.png';
 //import iconShadow from 'leaflet/dist/images/marker-shadow.png';
@@ -23,7 +26,8 @@ export class HotelDetailComponent implements OnInit {
   constructor(
     private searchService: SearchService,
     private logDialog : MatDialog,
-    
+    private graphqlService: GraphqlService,
+    private actRoute: ActivatedRoute,
   ) { 
 
    
@@ -67,14 +71,23 @@ export class HotelDetailComponent implements OnInit {
   filterRooms(freeBreakfast:boolean, free){
 
   }
+  hotel$: Subscription
+  
   ngOnInit() {
-    this.selectedHotel = this.searchService.selectedHotel
+    var id = + this.actRoute.snapshot.paramMap.get('id')
+    this.hotel$ = this.graphqlService.getHotel(id)
+    .subscribe(async query =>{
+      this.selectedHotel = query.data.hotel
+      this.displayedRooms = query.data.hotel.rooms
+      await this.sliceReview()
+    })
+    //this.selectedHotel = this.searchService.selectedHotel
     this.selectedCity = this.searchService.selectedHotelCity
     this.currRevIdx = 0
     this.revSize = 5
     this.sliceReview()
 
-    this.displayedRooms = this.selectedHotel.rooms
+//    this.displayedRooms = this.selectedHotel.rooms
 
     // this.map = L.map('mapid', {
     //   center: [ this.selectedHotel.latitude, this.selectedHotel.longitude],
@@ -133,6 +146,14 @@ export class HotelDetailComponent implements OnInit {
       width: "75vw",
       height:"80vh"
     })
+  }
+
+  shareFacebook(){
+    window.open("https://www.facebook.com/sharer.php?")
+  }
+
+  shareMail(){
+    location.href = "mailto:?subject=Check out this hotel&amp;body=links:"+document.URL
   }
 
 }

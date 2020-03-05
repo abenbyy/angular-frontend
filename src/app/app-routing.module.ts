@@ -69,7 +69,7 @@ const routes: Routes = [
     component: SearchTrainComponent
   },
   {
-    path:'detailpage',
+    path:'hotel/:id',
     component: HotelDetailComponent,
   },
   {

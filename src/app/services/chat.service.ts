@@ -11,6 +11,7 @@ import gql from 'graphql-tag';
 })
 export class ChatService {
   socket: any;
+  selectedImg:string
   readonly uri: string = "ws://localhost:4300";
   constructor(
     private apollo: Apollo,
