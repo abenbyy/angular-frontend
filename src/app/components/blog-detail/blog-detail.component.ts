@@ -49,7 +49,7 @@ export class BlogDetailComponent implements OnInit {
   share(arg: string){
     if(arg === "Facebook"){
       //href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.tiket.com%2Ftempat-wisata-di-seoul-untuk-liburan-keluarga%2F"
-      window.open("https://www.facebook.com/sharer.php?"+document.URL)
+      window.open("https://www.facebook.com/sharer.php?")
     }
     else if(arg === "Line"){
       //href="http://line.me/R/msg/text/?15+Pemandangan+Alam+Terindah+di+Indonesia+Ini+Bikin+Takjub+%7C+tiket.com%20https%3A%2F%2Fblog.tiket.com%2Fpemandangan-alam-terindah-di-indonesia%2F"
