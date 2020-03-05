@@ -27,11 +27,18 @@ export class GraphqlService {
         query GetUserByPhoneOrEmail($arg: String){
           userbyphoneoremail(arg:$arg){
             id,
+            
+            password,
             firstname,
             lastname,
-            password,
+            language,
+            postcode,
+            city,
+            address,
             email,
-            phone
+            phone,
+            language,
+
           }
         }`,
         variables:{
@@ -47,7 +54,10 @@ export class GraphqlService {
           createuser(firstname: $firstname, lastname: $lastname, password: $password, email: $email, phone: $phone){
             firstname,
             lastname,
-            password,
+            language,
+            postcode,
+            city,
+            address,
             email,
             phone,
           }
@@ -61,6 +71,36 @@ export class GraphqlService {
         }
     })
   }
+
+  updateUser(user: User):Observable<any>{
+    return this.apollo.mutate({
+      mutation: gql`
+      mutation UpdateData($id: Int, $fn: String,$ln: String,$email: String, $address: String, $phone: String, $city: String, $postcode: String, $language: String){
+        updateuser(id:$id, firstname: $fn, lastname:$ln, email:$email, address:$address, phone:$phone,city:$city,postcode:$postcode,language:$language){
+          firstname,
+          lastname,
+          language,
+          postcode,
+          city,
+          address,
+          email,
+          phone,
+        }
+      }`,
+        variables:{
+          "id": user.id,
+          "fn": user.firstname,
+          "ln": user.lastname,
+          "email": user.email,
+          "address": user.address,
+          "phone": user.phone,
+          "city": user.city,
+          "postcode": user.postcode,
+          "language": user.language
+        }
+    })
+  }
+
   createFlight(f: Flight,rfrom:string[],rfromc:string[],rto:string[],rtocode:string[],tdur:number[],fdur:number[],types:string[],names:string[]):Observable<any>{
     return this.apollo.mutate({
       mutation: gql`

@@ -1,7 +1,28 @@
 @import '../../app.component.scss';
 
-mat-sidenav-content{
-    font-family: $mfont;
+#change-cont{
+    width: 100vw;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#main-cont{
+    width: 100vw;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+}
+.expanel-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#left-side{
+    width: 25vw;
+}
+#right-side{
+    width: 65vw;
 }
 .blue-text{
     color: $hcolor;

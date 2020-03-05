@@ -1,6 +1,56 @@
-<mat-sidenav-container>
-    <mat-sidenav mode="side" opened>Test Side</mat-sidenav>
-    <mat-sidenav-content>
+<div id="change-cont">
+    <div>From : {{searchService.selectedFlightFrom}}</div>
+    <div>To : {{searchService.selectedFlightTo}}</div>
+    <button matTooltip="Click to change search" class="yellow-button" matButton (click)="openModal()">CHANGE SEARCH</button>
+</div>
+
+<div id="main-cont">
+    <div id="left-side">
+        <div id="filter-container">
+            <div>FILTERS</div>
+            <button class="blue-text" (click)="resetFilter()">RESET</button>
+        </div>
+        
+        <mat-accordion multi="true">
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Kelas
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expanel-container">
+                    <mat-checkbox [(ngModel)]="checkBool[0]" class="chkbox" >Economy</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[1]" class="chkbox" >Bussiness</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[2]" class="chkbox" >Executive</mat-checkbox>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Times
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expanel-container">
+                    <div>Departure</div>
+                    <mat-checkbox [(ngModel)]="checkBool[10]" class="chkbox" (click)="filterDeparture(0)">00:00 - 06:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[11]" class="chkbox" (click)="filterDeparture(6)">06:00 - 12:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[12]" class="chkbox" (click)="filterDeparture(12)">12:00 - 18:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[13]" class="chkbox" (click)="filterDeparture(18)">18:00 - 24:00</mat-checkbox>
+                    <div>Arrival</div>
+                    <mat-checkbox [(ngModel)]="checkBool[14]" class="chkbox" (click)="filterArrival(0)">00:00 - 06:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[15]" class="chkbox" (click)="filterArrival(6)">06:00 - 12:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[16]" class="chkbox" (click)="filterArrival(12)">12:00 - 18:00</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="checkBool[17]" class="chkbox" (click)="filterArrival(18)">18:00 - 24:00</mat-checkbox>
+                </div>
+            </mat-expansion-panel>
+           
+            
+        </mat-accordion>
+    
+
+    
+    </div>
+    <div id="right-side">
         <div class="trip-container" *ngFor="let trip of trips; let i = index">
             <div>{{trip.train.name}}</div>
             <div class="trip-detail-container">
@@ -34,5 +84,6 @@
             </div>
             <mat-divider></mat-divider>
         </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+    </div>
+</div>
+    

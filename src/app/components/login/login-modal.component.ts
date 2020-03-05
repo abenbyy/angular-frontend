@@ -112,7 +112,8 @@ export class LoginModalComponent implements OnInit {
     if(this.user[0].email === this.emailPhoneControl.value && this.user[0].password === this.passwordLoginControl.value){
       console.log("Validation Success!")
       this.logDialog.closeAll()
-      this.accountService.setUser(this.user[0])
+      this.accountService.user = this.user[0]
+      this.accountService.isLoggedIn = true
     }else{
       console.log("Validation Fail!")
       this.isIncorrectPass = true
@@ -150,11 +151,12 @@ export class LoginModalComponent implements OnInit {
 
   public checkUserAccount():void{
     this.user = [];
-    console.log(this.emailPhoneControl.value)
+    //console.log(this.emailPhoneControl.value)
     this.arg = this.emailPhoneControl.value
     this.user$ = this.graphqlService.searchUserByEmailorPhone(this.arg)
     .subscribe(async query=>{
       this.user = query.data.userbyphoneoremail
+      await console.log(this.user)
       await this.userIsNull()
     })
 

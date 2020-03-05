@@ -15,37 +15,37 @@
             </div>
         </div>
         <div id="right-side-profile">
+
             <mat-form-field>
-                <input matInput type="text" placeholder="Title" [formControl]="titleControl" value="{{accountService.user.firstname}}">
+                <input matInput type="text" placeholder="First Name" [formControl]="firstNameControl" value="{{user.firstname}}">
             </mat-form-field>
 
             <mat-form-field>
-                <input matInput type="text" placeholder="First Name" [formControl]="firstNameControl" value="{{accountService.user.firstname}}">
+                <input matInput type="text" placeholder="Last Name"  [formControl]="lastNameControl" value="{{user.lastname}}">
             </mat-form-field>
 
             <mat-form-field>
-                <input matInput type="text" placeholder="Last Name"  [formControl]="lastNameControl" value="{{accountService.user.lastname}}">
-            </mat-form-field>
-
-            <mat-form-field>
-                <input matInput type="text" placeholder="City Name"  [formControl]="cityControl" value="{{accountService.user.lastname}}">
+                <input matInput type="text" placeholder="City Name"  [formControl]="cityControl" value="{{user.city}}">
             </mat-form-field>
             
             <mat-form-field>
-                <input matInput type="text" placeholder="Phone Number"  [formControl]="phoneControl" value="{{accountService.user.lastname}}">
+                <input matInput type="text" placeholder="Phone Number"  [formControl]="phoneControl" value="{{user.phone}}">
             </mat-form-field>
 
 
             <mat-form-field>
-                <input matInput type="text" placeholder="Phone Number"  [formControl]="phoneControl" value="{{accountService.user.lastname}}">
+                <input matInput type="text" placeholder="Address"  [formControl]="addressControl" value="{{user.address}}">
             </mat-form-field>
 
             <mat-form-field>
-                <input matInput type="text" placeholder="Zip Code">
+                <input matInput type="text" placeholder="ZipCode"  [formControl]="zipControl" value="{{user.postcode}}">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Prefered Language"  [formControl]="langControl" value="{{user.language}}">
             </mat-form-field>
         </div>
     </div>
     <div class="right-end">
-        <button mat-button>SAVE</button>
+        <button mat-button (click)="validatePhoneNumber()">SAVE</button>
     </div>
 </div>

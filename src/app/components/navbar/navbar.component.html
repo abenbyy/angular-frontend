@@ -4,7 +4,21 @@
             <a [routerLink] = "['/']">
                 <img src="assets/icons/navbar-icon.png" alt="">
             </a>
-            <div>
+            <div *ngIf="isLogin && lang ==='English'">
+                <a [routerLink]="['/flights']" (click)="changeToFlight()">Flight</a>
+                <a [routerLink]="['/hotel']">Hotel</a>
+                <a [routerLink]="['/train']" (click)= "changeToTrain()">Train</a>
+                <a [routerLink]="['/carrental']">Car Rental</a>
+                <a [routerLink]="['/entertainment']">Entertainment</a>
+            </div>
+            <div *ngIf="isLogin && lang ==='Indonesia'">
+                <a [routerLink]="['/flights']" (click)="changeToFlight()">Penerbangan</a>
+                <a [routerLink]="['/hotel']">Hotel</a>
+                <a [routerLink]="['/train']" (click)= "changeToTrain()">Kereta</a>
+                <a [routerLink]="['/carrental']">Sewa Mobil</a>
+                <a [routerLink]="['/entertainment']">Hiburan</a>
+            </div>
+            <div *ngIf="!isLogin">
                 <a [routerLink]="['/flights']" (click)="changeToFlight()">Flight</a>
                 <a [routerLink]="['/hotel']">Hotel</a>
                 <a [routerLink]="['/train']" (click)= "changeToTrain()">Train</a>

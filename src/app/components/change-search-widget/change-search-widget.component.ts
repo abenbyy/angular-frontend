@@ -7,6 +7,7 @@ import { Flight } from 'src/app/models/flight';
 import { Subscription } from 'rxjs';
 import { GraphqlService } from 'src/app/services/graphql.service';
 import { Router } from '@angular/router';
+import { Station } from 'src/app/models/station';
 
 @Component({
   selector: 'app-change-search-widget',
@@ -29,9 +30,13 @@ export class ChangeSearchWidgetComponent implements OnInit {
   flights: Flight[]
   hotel$: Subscription
   flight$: Subscription
+
+  trip$: Subscription
   selectedFrom: string
   selectedTo: string
   selectedCity: string
+  stations: Station
+  station$: Subscription
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private searchService: SearchService,
@@ -43,6 +48,12 @@ export class ChangeSearchWidgetComponent implements OnInit {
     
   ngOnInit() {
     this.airports = this.searchService.airports
+
+    this.station$ = this.graphqlService.getStations()
+    .subscribe(async query =>{
+      this.stations = query.data.stations
+      
+    })
     
   }
 
@@ -58,6 +69,13 @@ export class ChangeSearchWidgetComponent implements OnInit {
       this.hotel$ = this.graphqlService.searchHotels(this.selectedCity)
       .subscribe(async query=>{
         this.searchService.hotelResult = query.data.searchhotel
+        this.dialog.closeAll()
+      })
+    }
+    else if(this.data.type === "train"){
+      this.trip$ = this.graphqlService.searchTrips(this.selectedFrom, this.selectedTo)
+      .subscribe(async query=>{
+        this.searchService.tripsResult = query.data.searchtrip
         this.dialog.closeAll()
       })
     }

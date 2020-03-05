@@ -172,6 +172,8 @@ export class QuickSearchComponent implements OnInit {
         this.trip$ = this.graphqlService.searchTrips(this.selectedFrom,this.selectedTo)
         .subscribe(async query =>{
           this.trips = query.data.searchtrip
+          this.searchService.selectedFlightFrom = this.selectedFrom
+          this.searchService.selectedFlightTo = this.selectedTo
           await this.insertTrip()
         })
         break;

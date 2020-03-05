@@ -12,6 +12,8 @@ import { SearchService } from 'src/app/services/search.service';
 })
 export class NavbarComponent implements OnInit {
 
+  isLogin:boolean
+  lang: string
   constructor(
     public logDialog: MatDialog,
     public accountService: AccountService,
@@ -19,7 +21,19 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isLogin = this.accountService.isLoggedIn
+    if(this.accountService.user !== null){
+      this.lang = this.accountService.user.language
+    }
 
+    setInterval(function(){
+      this.isLogin = this.accountService.isLoggedIn
+      
+      if(this.accountService.user !== null){
+        this.lang = this.accountService.user.language
+      }
+      console.log(this.isLogin +" "+this.lang)
+    }.bind(this),100)
   }
 
   changeToFlight(){
